@@ -1,8 +1,8 @@
 Appstackr
 =========
 
-> aims to provide a simple way to manage website browser clients including Javascript, CSS and Html snippets. 
->Also, it is not for library. For library , it is suggested to use Grunt.
+>Appstackr aims to provide a simple way to manage website browser clients including Javascript, CSS and Html snippets. 
+>It is purely designed for website browser clients management.
 
 
 

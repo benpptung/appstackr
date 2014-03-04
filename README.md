@@ -10,9 +10,9 @@ Features
 ========
 - Support commonjs javascript via browserify or webmake, you can write your javascript in commonjs interface or not.
 - Support less or plain CSS
-- Simplified and centralized app stacks to include your html snippets, javascript, or css files.
+- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files.
 - No limitation how you should structure your browser clients( html/js/css files).
-- URL refactor in html and css for CDN deploy
+- URL refactor in html and css for CDN deploy. e.g. `todos.min.js` become `todos.min-jadqu9.js` and the url in html is refactored from `'/js/todos.min.js'` to `'//cdn.yoursite.com/js/todos.min-jadqu0.js'`. So, you can simply upload all of your public files to your cdn server.
 
 
 

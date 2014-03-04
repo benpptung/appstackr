@@ -1,4 +1,4 @@
-Appstacker
+Appstackr
 =========
 
 > aims to provide a simple way to manage website browser clients including Javascript, CSS and Html snippets. 
@@ -19,7 +19,7 @@ Features
 Installation
 ============================
 ```
-$ npm -g install appstacker
+$ npm -g install appstackr
 ```
 
 

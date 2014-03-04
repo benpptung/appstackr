@@ -1,5 +1,5 @@
 {
-  "name": "appstacker",
+  "name": "appstackr",
   "version": "0.1.0",
   "description": "browser app packager - package your browser clients in simple and centralized way and build them for CDN deployment",
   "bin": {
@@ -17,7 +17,7 @@
   ],
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/benpptung/appstacker.git"
+    "url" : "https://github.com/benpptung/appstackr.git"
   },
   "main": "index.js",
   "scripts": {

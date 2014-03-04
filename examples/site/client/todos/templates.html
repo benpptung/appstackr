@@ -1,0 +1,17 @@
+<script type="text/template" id="item-template">
+    <div class="view checkbox">
+        <label class="text-info">
+            <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> >
+            <%=title %>
+            <button type="button" class="destroy glyphicon glyphicon-remove close"></button>
+        </label>
+    </div>
+    <input class="edit" type="text" value="<%=title %>" />
+</script>
+
+<script type="text/template" id="stats-template">
+    <% if (done) { %>
+    <a class="clear-completed">Clear <%=done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+</script>

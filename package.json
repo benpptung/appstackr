@@ -1,0 +1,56 @@
+{
+  "name": "appstacker",
+  "version": "0.1.0",
+  "description": "browser app packager - package your browser clients in organized way and build them for CDN deployment",
+  "bin": {
+    "appstack": "bin/appstack.js",
+    "appbuild": "bin/appbuild.js"
+  },
+  "keywords": [
+    "assets",
+    "packager",
+    "css",
+    "javascript",
+    "less",
+    "minifier",
+    "cdn"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/benpptung/appstack.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "Ben P.P. Tung",
+  "license": "MIT",
+  "directories": "./bin",
+  "preferGlobal": "true",
+  "dependencies": {
+    "browserify": "~3.24.2",
+    "uglify-js": "~2.4.12",
+    "base-converter": "~1.1.2",
+    "async": "~0.2.10",
+    "commander": "~2.1.0",
+    "buffer-crc32": "~0.2.1",
+    "html-minifier": "~0.5.5",
+    "webmake": "~0.3.25",
+    "glob": "~3.2.8",
+    "node.extend": "~1.0.9",
+    "less": "~1.6.3",
+    "ycssmin": "~1.0.1",
+    "clean-css": "~2.0.8",
+    "prettyjson": "~0.12.0",
+    "mkdirp": "~0.3.5",
+    "rimraf": "~2.2.6"
+  },
+  "devDependencies": {
+    "express": "~3.4.7",
+    "swig": "~1.3.2",
+    "mocha": "~1.17.1",
+    "should": "~3.1.2",
+    "sinon": "~1.8.1",
+    "jquery": "1.x"
+  }
+}

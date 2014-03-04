@@ -1,0 +1,31 @@
+{% extends './layout/index.html' %}
+
+{% set mastnav = {note: 'active'} %}
+
+{% block header%}
+<style>
+{% include 'snippet/note-css.html' %}
+</style>
+{% endblock %}
+
+{% block page %}
+{% include 'snippet/note/main.html' %}
+<div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="jumbotron">
+                <h1>A simple vacation note</h1>
+                <p>The simple vacation note will keep showing till the visitor <span class="text-info">confirm</span> it twice.</p>
+                <p><a class="btn btn-primary btn-large">Back</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'snippet/note/cdn.html' %}
+<script>
+{% include 'snippet/note-js.html' %}
+</script>
+{% endblock %}

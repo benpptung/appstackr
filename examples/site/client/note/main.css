@@ -1,0 +1,35 @@
+#vacation-note:before, #vacation-note:after {
+	content: " ";
+	display: table;
+}
+
+#vacation-note {
+	background-color: #ee001f;
+	border-color: #808080;
+	color: #ffffff;
+	border-width: 0 0 1px;
+	top: -1000px;
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 1000;
+	margin-bottom: 20px;
+	font-size: 14px;
+	line-height: 5em;
+	padding: 0.1em;
+
+    transition:top 1s ease 0s;
+    -moz-transition:top 1s ease 0s; /* Firefox 4 */
+    -webkit-transition:top 1s ease 0s; /* Safari and Chrome */
+    -o-transition:top 1s ease 0s; /* Opera */
+    -ms-transition:top 1s ease 0s;
+}
+    #vacation-note .highlight {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    #vacation-note a {
+        color: #EEEEEE;
+        text-decoration: underline;
+    }

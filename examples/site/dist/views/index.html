@@ -1,0 +1,29 @@
+{% extends './layout/index.html' %}
+
+{% set mastnav = {home: 'active'} %}
+
+{% block page %}
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+                <h1>appstack example use</h1>
+                <div class="list-group">
+                    <a class="list-group-item" href="/TodoMVC/">
+                        <h3 class="list-group-item-heading">Todo MVC</h3>
+                        <p class="list-group-item-text">Use browserify to link your commonjs files and package your html and css files into your views and public folders</p>
+                    </a>
+                    <a class="list-group-item" href="/bs/">
+                        <h3 class="list-group-item-heading">Customized Bootstrap Theme</h3>
+                        <p class="list-group-item-text">Build your own bootstrap js, css - see how appstack stack less files into css, and concat build Bootstrap-like js files.</p>
+                    </a>
+                    <a class="list-group-item" href="/vacation-note/">
+                        <h3 class="list-group-item-heading">Vacation Note</h3>
+                        <p class="list-group-item-text">You can put all of your javascript, html, css into inline html codes for your views</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appstack Test</title>
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <link href="//cdn.jsdelivr.net/respond/1.4.2/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy">
+    <link href="/origindomain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script src="//cdn.jsdelivr.net/respond/1.4.2/cross-domain/respond.proxy.js"></script>
+    <![endif]-->
+</head>
+<body style="padding-top: 50px">
+    <!-- start of container -->
+    <div class="container" style="width: 60%">
+        <div class="jumbotron">
+            <h1>Appstack Functional Test</h1>
+            <div class="panel panel-primary">
+                <div class="panel-heading">target list</div>
+                <ul class="list-group">
+                    <li class="list-group-item">requirejs interface: todo.min.js should be working and minified with source map</li>
+                    <li class="list-group-item">non-requirejs interface: alert jhtml should working and minified as jhtml</li>
+                    <li class="list-group-item">**: recursive *.js could be found and working after minification with source map</li>
+                    <li class="list-group-item">less: bootstrap.css from less/bootstarp</li>
+                    <li class="list-group-item">less: theme.css from less/theme</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end of container -->
+
+<!-- start of javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="/js/todo.js"></script>
+<script src="/js/alert.js"></script>
+<script src="/js/bs.js"></script>
+
+</body>
+</html>

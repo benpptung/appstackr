@@ -1,0 +1,63 @@
+{
+  "stack1": {
+    "name": "todos",
+    "nature": "js",
+    "files": [
+      "client/todo/VAppView.js"
+    ],
+    "commonjs": "webmake"
+  },
+  "stack2": {
+    "name": "todos",
+    "nature": "css",
+    "files": [
+      "less/app-todo/todos.css"
+    ]
+  },
+  "stack3": {
+    "name": "alert",
+    "nature": "jhtml",
+    "files": [
+      "client/alert/transition.js",
+      "client/alert/alert.js"
+    ]
+  },
+  "stack4": {
+    "name": "bs",
+    "nature": "js",
+    "files": [
+      "client/bs/**"
+    ]
+  },
+  "stack5": {
+    "name": "bootstrap",
+    "nature": "css",
+    "files": [
+      "less/bootstrap/bootstrap.less"
+    ]
+  },
+  "stack6": {
+    "name": "bootstrap-theme",
+    "nature": "css",
+    "files": [
+      "less/theme/theme.less"
+    ]
+  },
+  "stack7": {
+    "name": "invalid-commonjs",
+    "nature": "js",
+    "files": [
+        "client/alert/transition.js",
+        "client/alert/alert.js"
+    ],
+    "commonjs": "browserify"
+  },
+  "stack8": {
+    "name": "impossible-stack",
+    "nature": "css",
+    "files": [
+      "less/**"
+    ],
+    "commonjs": "webmake"
+  }
+}

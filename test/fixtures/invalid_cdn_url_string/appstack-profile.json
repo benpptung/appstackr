@@ -1,0 +1,13 @@
+{
+  "cdn": "fkdkd",
+  "views": "views",
+  "public": "public",
+  "distViews": "dist/views",
+  "distPublic": "dist/public",
+  "css": "style",
+  "js": "javascript",
+  "img": "image",
+  "asset": "asset",
+  "jhtml": "jshtml",
+  "src": "srcmap"
+}

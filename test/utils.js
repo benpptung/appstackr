@@ -17,8 +17,8 @@ var profile = require('./support'),
     async = require('async'),
     prettyjson = require('prettyjson');
 
-var webmake_file_hash = '405f15753e5e9b525bcc0ff29c67ba06748d0c53',
-    webmake_files_hash = 'd22461f89f22204278bd22fd21aa06d2babb51a5',
+var webmake_file_hash = 'a05531a72ccd74e28817dfed1d0390a7c721b036',
+    webmake_files_hash = '8c7d26626e92c722daa4c87bac432221d68888be',
     browserify_file_hash = '5e372ed784133892007ff3bb7240b8f34b39a497',
     browserify_files_hash = '7137e1ea4841dd91c3f7be7f2bf3e03cba744ac6',
     concat_files_hash = '5513854f28f4c426832b3832acb42bc4006d527a',

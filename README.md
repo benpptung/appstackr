@@ -27,8 +27,8 @@ How to use
 ==========
 
 1. There are two commands: `appstack` and `appbuild`. Check How to use them via `--help`. Use them on your project root directory, because it will use the `process.cwd()` as the base path.
-2. Put a `appstack.js` on your project root directory, it is similar to Gruntfile.js, but much simplified for only the stacks you want to put on your website. Check `examples/site/appstack.js` for more information.
-3. Put an optional `appstack-profile.json` on your project root directory. It is to configure the `appstack`.
+2. Put a `stacksfile.js` on your project root directory, it is similar to Gruntfile.js, but much simplified for only the stacks you want to put on your website. Check `examples/site/stacksfile.js` for more information.
+3. Put an optional `appstack-profile.json` on your project root directory. It will configure the `appstack` and `appbuild` command behavior.
 
 
 
@@ -45,10 +45,10 @@ How to use
 |   \-- snippet
 |
 |-- dist
-|-- appstack.js
+|-- stacksfile.js
 \-- appstack-profile.json
 ```
-While using command `appstack`, it will load the files described in `appstack.js`, concat, minifiy and write to the `public` and `views-snippet` directory.
+While using command `appstack`, it will load the files described in `stacksfile.js`, concat, minifiy and write to the `public` and `views/snippet` directory.
 
 While using command `appbuild`, it will copy the `js`, `img`, `css`, and `asset` directories under `public` folder, add version control hash, and write to `dist/public` directory, and refactor the urls in `views` and `css` files.
 

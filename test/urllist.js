@@ -14,15 +14,15 @@ var profile = require('./support'),
     sinon = require('sinon');
 
 var viewfile = path.join(__dirname, 'fixtures', 'urllist', 'todo.html');
-correct_hash = '206aa51b2b197093dd0b391ba5509233d13527a5';
+correct_hash = '32646c187db466d5519c9436a371257f9c67e1cb';
 
 var path_pairs = [
-  { localUrl: '/fixtures/asset/vendor/json2.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/json2-fdafds.js'},
-  { localUrl: '/fixtures/todos.min.css', cdnUrl: 'http://s3.icartoon.me/todos.min-1du3ds3.css'},
-  { localUrl: '/fixtures/asset/vendor/jquery.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/jquery-t5d34d.js'},
-  { localUrl: '/fixtures/asset/vendor/underscore.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/underscore-fdsfsd.js'},
-  { localUrl: '/fixtures/asset/vendor/backbone.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/backbone-32f324.js'},
-  { localUrl: '/fixtures/js/todos.min.js', cdnUrl: 'http://s3.icartoon.me/js/todos.min-23resdf.js'}
+  { localUrl: '/asset/vendor/json2.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/json2-fdafds.js'},
+  { localUrl: '/asset/todos.min.css', cdnUrl: 'http://s3.icartoon.me/todos.min-1du3ds3.css'},
+  { localUrl: '/asset/vendor/jquery.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/jquery-t5d34d.js'},
+  { localUrl: '/asset/vendor/underscore.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/underscore-fdsfsd.js'},
+  { localUrl: '/asset/vendor/backbone.js', cdnUrl: 'http://s3.icartoon.me/asset/vendor/backbone-32f324.js'},
+  { localUrl: '/js/todos.min.js', cdnUrl: 'http://s3.icartoon.me/js/todos.min-23resdf.js'}
 ];
 
 describe('urllist', function () {
@@ -39,7 +39,7 @@ describe('urllist', function () {
       // transform the content
       worker(viewfile, function (err, hash) {
         if (err) console.error(prettyjson.render(err));
-        sinon.assert.calledWithExactly(utils.log, 'might be broken link: /fixtures/asset/vendor/backbone.localStorage.js');
+        sinon.assert.calledWithExactly(utils.log, 'might be broken link: /asset/vendor/backbone.localStorage-fake.js');
         hash.should.be.equal(correct_hash);
 
         // restore stub and done.

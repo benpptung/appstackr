@@ -23,6 +23,7 @@ var ctrl = require('./ctrl'),
 
 swig.setDefaults({cache: false}); // to ensure NEVER cache view for demo
 
+app.disable('etag');
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.engine('html', swig.renderFile);

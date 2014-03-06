@@ -1,1 +1,19 @@
-jQuery(function(o){"use strict";var i=window.Cookies&&Cookies.get("confirms"),n=o("#vacation-note"),t=2,c=window.noticeDisabled||!1,e=new Date,a=new Date(2014,12,31);i||(i=0),a>e&&t>i&&!c&&setTimeout(function(){n.css({top:0,boxShadow:"#666 0px 0px 10px"})},900),o(document).on("click",'[data-confirm="vacation"]',function(){Cookies.set("confirms",++i,{expires:new Date(2014,12,31)}),n.trigger(o.Event("click.confirm.vacation"))}),n.on("click.confirm.vacation",function(){var i=o(this);i.css({top:"-1000px"}),o('[data-confirm="vacation"]').fadeOut()})});
+jQuery(function(o) {
+    "use strict";
+    var i = window.Cookies && Cookies.get("confirms"), n = o("#vacation-note"), t = 2, c = window.noticeDisabled || !1, e = new Date(), a = new Date(2014, 12, 31);
+    i || (i = 0), a > e && t > i && !c && setTimeout(function() {
+        n.css({
+            top: 0,
+            boxShadow: "#666 0px 0px 10px"
+        });
+    }, 900), o(document).on("click", '[data-confirm="vacation"]', function() {
+        Cookies.set("confirms", ++i, {
+            expires: new Date(2014, 12, 31)
+        }), n.trigger(o.Event("click.confirm.vacation"));
+    }), n.on("click.confirm.vacation", function() {
+        var i = o(this);
+        i.css({
+            top: "-1000px"
+        }), o('[data-confirm="vacation"]').fadeOut();
+    });
+});

@@ -19,12 +19,13 @@ var profile = require('./support'),
 
 var webmake_file_hash = 'd091813a3a27e39032e9b7611903d0d293b9c1b3',
     webmake_files_hash = 'a76a9ac35ac8a612a2c723e959553500642319ca',
-    browserify_file_hash = '5e372ed784133892007ff3bb7240b8f34b39a497',
-    browserify_files_hash = '7137e1ea4841dd91c3f7be7f2bf3e03cba744ac6',
+    browserify_file_hash = '798e3eb05c22745c0bb10fc52b6c970f4c3578d0',
+    browserify_files_hash = '80f9cdc664d397f753cf801454641f2eabf617b9',
     concat_files_hash = '5513854f28f4c426832b3832acb42bc4006d527a',
     css_lessfile_hash = '904fc52b973fecb657dedf20554f4e1c0846d2fd',
     css_lessfiles_hash = 'a15c2080224887c358ca1cefc74c3c1b2fce2ccb',
-    css_lesscss_hash = '2676928e861685157761ddac3c58b12cdfa0a992',
+    css_scssfiles_hash = 'aa54b59de523f02252a373b4f3f741ffafbd66d3',
+    css_lesscss_hash = '718849a8f5217835bdb7db37dcdb04c469c640e9',
     minified_css_beautify_hash = '2676928e861685157761ddac3c58b12cdfa0a992',
     minified_cleancss_hash = 'd6faa3c3ba5cdfa741d1607a11e06831c6ea9802',
     minified_ycssmin_hash = 'd176de20cc45dc1dcf89f08025db1c4941794a01',
@@ -40,6 +41,8 @@ var main = path.join(__dirname, 'fixtures', 'utils', 'commonjs', 'main.js'),
     main2 = path.join(__dirname, 'fixtures', 'utils', 'commonjs', 'main2.js'),
     bootstrap_file = path.join(__dirname, 'fixtures', 'utils', 'less', 'bootstrap.less'),
     theme_file = path.join(__dirname, 'fixtures', 'utils','less', 'theme.less'),
+    scss_1_file = path.join(__dirname, 'fixtures', 'utils', 'scss', '1.scss'),
+    scss_2_file = path.join(__dirname, 'fixtures', 'utils', 'scss', '2.scss'),
     css_file = path.join(__dirname, 'fixtures', 'utils', 'css', 'cssmini.css'),
     file_alert = path.join(__dirname, 'fixtures', 'utils', 'generic', 'alert.js'),
     file_trans = path.join(__dirname, 'fixtures', 'utils', 'generic', 'transition.js'),
@@ -116,8 +119,17 @@ describe('utils', function(){
         done();
       })
     });
-    it('could concat css file to less rendered css file', function(done){
-      runner([bootstrap_file, theme_file, css_file], function(err, hash){
+
+    it('could render scss files into css', function(done){
+      runner([scss_1_file, scss_2_file], function(err, hash){
+        if (err) return done(err);
+        hash.should.be.equal(css_scssfiles_hash);
+        done();
+      })
+    });
+
+    it('could compile css, less, scss at the same time into css', function(done){
+      runner([bootstrap_file, scss_1_file, scss_2_file, theme_file, css_file], function(err, hash){
         hash.should.be.equal(css_lesscss_hash);
         done();
       })

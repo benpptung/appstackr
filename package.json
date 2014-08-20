@@ -15,9 +15,9 @@
     "minifier",
     "cdn"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/benpptung/appstackr.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benpptung/appstackr.git"
   },
   "main": "index.js",
   "scripts": {
@@ -28,22 +28,23 @@
   "directories": "./bin",
   "preferGlobal": "true",
   "dependencies": {
-    "browserify": "~5.9.1",
-    "uglify-js": "~2.4.12",
-    "base-converter": "~1.1.2",
     "async": "~0.2.10",
-    "commander": "~2.1.0",
+    "base-converter": "~1.1.2",
+    "browserify": "~5.9.1",
     "buffer-crc32": "~0.2.1",
-    "html-minifier": "~0.5.5",
-    "webmake": "~0.3.25",
-    "glob": "~3.2.8",
-    "node.extend": "~1.0.9",
-    "less": "~1.6.3",
-    "ycssmin": "~1.0.1",
     "clean-css": "~2.0.8",
-    "prettyjson": "~0.12.0",
+    "commander": "~2.1.0",
+    "glob": "~3.2.8",
+    "html-minifier": "~0.5.5",
+    "less": "~1.6.3",
     "mkdirp": "~0.3.5",
-    "rimraf": "~2.2.6"
+    "node-sass": "^0.9.3",
+    "node.extend": "~1.0.9",
+    "prettyjson": "~0.12.0",
+    "rimraf": "~2.2.6",
+    "uglify-js": "~2.4.12",
+    "webmake": "~0.3.25",
+    "ycssmin": "~1.0.1"
   },
   "devDependencies": {
     "express": "~3.4.7",

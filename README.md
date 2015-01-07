@@ -19,6 +19,11 @@ Features
 
 Installation
 ============================
+Install to your project
+```
+$ npm install appstackr
+```
+or install globally
 ```
 $ npm -g install appstackr
 ```

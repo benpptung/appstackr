@@ -9,8 +9,8 @@ Appstackr
 Features
 ========
 - Support commonjs javascript via browserify or webmake, you can write your javascript in commonjs interface or not.
-- Support less or plain CSS
-- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files.
+- Support `sass`, `less` or `plain CSS`. Note: `appstackr` depends on `node-sass`, which using `libsass`, so it cannot support new `sass` syntax.
+- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files. 
 - No limitation how you should structure your browser clients( html/js/css files).
 - URL refactor in html and css for CDN deploy. e.g. `todos.min.js` become `todos.min-jadqu9.js` and the url in html is refactored from `'/js/todos.min.js'` to `'//cdn.yoursite.com/js/todos.min-jadqu0.js'`. So, you can simply upload all of your public files to your cdn server.
 
@@ -27,10 +27,91 @@ How to use
 ==========
 
 1. There are two commands: `appstack` and `appbuild`. Check How to use them via `--help`. Use them on your project root directory, because it will use the `process.cwd()` as the base path.
-2. Put a `stacksfile.js` on your project root directory, it is similar to Gruntfile.js, but much simplified for only the stacks you want to put on your website. Check `examples/site/stacksfile.js` for more information.
+2. Put a `stacksfile.js` on your project root directory, Check `examples/site/stacksfile.js` for more information. It simply tell appstackr how to split your `js`, `css`, `html` files into different files.
 3. Put an optional `appstack-profile.json` on your project root directory. It will configure the `appstack` and `appbuild` command behavior.
 
+### An stacksfile.js example
+```
+module.exports = [
+  /*
+   * your site level css, it could be 
+   * sass, less or plain css files
+   */
+  {
+    "name": "site",
+    "nature": "css",
+    "files": [
+        "less/mastnav.less"
+    ]
+  },
 
+  /*
+   * todos client stacks
+   */
+  {
+    "name": "todos",
+    "nature": "js",
+    "files": [
+      "client/todos/AppView.js"
+    ],
+    "commonjs": "browserify"
+  },
+  {
+    "name": "todos",
+    "nature": "css",
+    "files": [
+      "client/todos/less/todos.less"
+    ]
+  },
+  
+  {
+    "name": "todos",
+    "nature": "html",
+    "files": [
+      "client/todos/todos.html",
+      "client/todos/templates.html"
+    ]
+  },
+
+
+  /*
+   * put plain js files
+   */
+
+  {
+    "name": "bootstrap",
+    "nature": "js",
+    "files": [
+      "client/bootstrap/transition.js",
+      "client/bootstrap/alert.js",
+      "client/bootstrap/button.js",
+      "client/bootstrap/carousel.js",
+      "client/bootstrap/collapse.js",
+      "client/bootstrap/dropdown.js",
+      "client/bootstrap/modal.js",
+      "client/bootstrap/tooltip",
+      "client/bootstrap/popover",
+      "client/bootstrap/scrollspy.js",
+      "client/bootstrap/tab.js",
+      "client/bootstrap/affix.js"
+    ]
+  },
+  {
+    "name": "bootstrap",
+    "nature": "css",
+    "files": [
+      "less/bootstrap/bootstrap.less"
+    ]
+  },
+  {
+    "name": "bootstrap-theme",
+    "nature": "css",
+    "files": [
+      "less/bootstrap/theme.less"
+    ]
+  }
+]
+```
 
 ### Default directory structure ###
 ```

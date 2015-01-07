@@ -3,8 +3,8 @@
   "version": "0.1.5",
   "description": "browser app packager - package your browser clients in simple and centralized way and build them for CDN deployment",
   "bin": {
-    "appstack": "bin/appstack.js",
-    "appbuild": "bin/appbuild.js"
+    "appstack": "./bin/appstack.js",
+    "appbuild": "./bin/appbuild.js"
   },
   "keywords": [
     "assets",
@@ -21,7 +21,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha test"
+    "test": "NODE_ENV=test mocha test",
+    "build": "appstack"
   },
   "author": "Ben P.P. Tung",
   "license": "MIT",

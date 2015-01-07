@@ -8,9 +8,10 @@ Appstackr
 
 Features
 ========
-- Support commonjs javascript via browserify or webmake, you can write your javascript in commonjs interface or not.
-- Support `sass`, `less` or `plain CSS`. Note: `appstackr` depends on `node-sass`, which using `libsass`, so it cannot support new `sass` syntax.
-- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files. 
+
+- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files. The MAIN ideas are:
+  - Bundle all the js, css, and html files into few files, so the html won't get overwhelmed by a lot of \<script\> tags.
+  - Know where your source files coming from, and reorganize them if needed.
 - No limitation how you should structure your browser clients( html/js/css files).
 - URL refactor in html and css for CDN deploy. e.g. `todos.min.js` become `todos.min-jadqu9.js` and the url in html is refactored from `'/js/todos.min.js'` to `'//cdn.yoursite.com/js/todos.min-jadqu0.js'`. So, you can simply upload all of your public files to your cdn server.
 

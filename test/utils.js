@@ -64,7 +64,7 @@ describe('utils', function(){
     });
   });
 
-  describe('#webmake()', function(){
+/*  describe('#webmake()', function(){
     var runner = async.compose(sha1, webmake);
 
     it('could convert commonjs linked files into one', function(done){
@@ -81,7 +81,7 @@ describe('utils', function(){
         done();
       });
     });
-  });
+  });*/
 
   describe('#browserify()', function(){
     var runner = async.compose(sha1, browserify);

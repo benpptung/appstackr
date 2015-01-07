@@ -1,6 +1,6 @@
 {
   "name": "appstackr",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "browser app packager - package your browser clients in simple and centralized way and build them for CDN deployment",
   "bin": {
     "appstack": "./bin/appstack.js",

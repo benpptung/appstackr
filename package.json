@@ -26,7 +26,6 @@
   "author": "Ben P.P. Tung",
   "license": "MIT",
   "directories": "./bin",
-  "preferGlobal": "true",
   "dependencies": {
     "async": "~0.2.10",
     "base-converter": "~1.1.2",

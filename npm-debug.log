@@ -1,0 +1,196 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', './' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose publish [ './' ]
+5 verbose cache add [ './', null ]
+6 verbose cache add name=undefined spec="./" args=["./",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: './',
+7 verbose parsed url   path: './',
+7 verbose parsed url   href: './' }
+8 silly lockFile 0ee6c175- ./
+9 verbose lock ./ /Users/benpptung/.npm/0ee6c175-.lock
+10 verbose tar pack [ '/Users/benpptung/.npm/appstackr/0.1.6/package.tgz', './' ]
+11 verbose tarball /Users/benpptung/.npm/appstackr/0.1.6/package.tgz
+12 verbose folder ./
+13 info prepublish appstackr@0.1.6
+14 silly lockFile 04cb2bca-tar tar://./
+15 verbose lock tar://./ /Users/benpptung/.npm/04cb2bca-tar.lock
+16 silly lockFile 52c9ebc4--npm-appstackr-0-1-6-package-tgz tar:///Users/benpptung/.npm/appstackr/0.1.6/package.tgz
+17 verbose lock tar:///Users/benpptung/.npm/appstackr/0.1.6/package.tgz /Users/benpptung/.npm/52c9ebc4--npm-appstackr-0-1-6-package-tgz.lock
+18 silly lockFile 04cb2bca-tar tar://./
+19 silly lockFile 04cb2bca-tar tar://./
+20 silly lockFile 52c9ebc4--npm-appstackr-0-1-6-package-tgz tar:///Users/benpptung/.npm/appstackr/0.1.6/package.tgz
+21 silly lockFile 52c9ebc4--npm-appstackr-0-1-6-package-tgz tar:///Users/benpptung/.npm/appstackr/0.1.6/package.tgz
+22 silly lockFile 1126bd98-tung-npm-appstackr-0-1-6-package /Users/benpptung/.npm/appstackr/0.1.6/package
+23 verbose lock /Users/benpptung/.npm/appstackr/0.1.6/package /Users/benpptung/.npm/1126bd98-tung-npm-appstackr-0-1-6-package.lock
+24 silly lockFile 1126bd98-tung-npm-appstackr-0-1-6-package /Users/benpptung/.npm/appstackr/0.1.6/package
+25 silly lockFile 1126bd98-tung-npm-appstackr-0-1-6-package /Users/benpptung/.npm/appstackr/0.1.6/package
+26 silly lockFile 0ee6c175- ./
+27 silly lockFile 0ee6c175- ./
+28 silly publish { name: 'appstackr',
+28 silly publish   version: '0.1.6',
+28 silly publish   description: 'browser app packager - package your browser clients in simple and centralized way and build them for CDN deployment',
+28 silly publish   bin: { appstack: './bin/appstack.js', appbuild: './bin/appbuild.js' },
+28 silly publish   keywords:
+28 silly publish    [ 'assets',
+28 silly publish      'packager',
+28 silly publish      'css',
+28 silly publish      'javascript',
+28 silly publish      'less',
+28 silly publish      'minifier',
+28 silly publish      'cdn' ],
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'https://github.com/benpptung/appstackr.git' },
+28 silly publish   main: 'index.js',
+28 silly publish   scripts: { test: 'NODE_ENV=test mocha test' },
+28 silly publish   author: { name: 'Ben P.P. Tung' },
+28 silly publish   license: 'MIT',
+28 silly publish   directories: './bin',
+28 silly publish   preferGlobal: 'true',
+28 silly publish   dependencies:
+28 silly publish    { async: '~0.2.10',
+28 silly publish      'base-converter': '~1.1.2',
+28 silly publish      browserify: '~5.9.1',
+28 silly publish      'buffer-crc32': '~0.2.1',
+28 silly publish      'clean-css': '~2.0.8',
+28 silly publish      commander: '~2.1.0',
+28 silly publish      glob: '~3.2.8',
+28 silly publish      'html-minifier': '~0.5.5',
+28 silly publish      less: '~1.6.3',
+28 silly publish      mkdirp: '~0.3.5',
+28 silly publish      'node-sass': '^0.9.3',
+28 silly publish      'node.extend': '~1.0.9',
+28 silly publish      prettyjson: '~0.12.0',
+28 silly publish      rimraf: '~2.2.6',
+28 silly publish      'uglify-js': '~2.4.12',
+28 silly publish      webmake: '~0.3.25',
+28 silly publish      ycssmin: '~1.0.1' },
+28 silly publish   devDependencies:
+28 silly publish    { express: '~3.4.7',
+28 silly publish      swig: '~1.3.2',
+28 silly publish      mocha: '~1.17.1',
+28 silly publish      should: '~3.1.2',
+28 silly publish      sinon: '~1.8.1' },
+28 silly publish   readme: 'Appstackr\n=========\n\n>Appstackr aims to provide a simple way to manage website browser clients including Javascript, CSS and Html snippets. \n>It is purely designed for website browser clients management.\n\n\n\nFeatures\n========\n\n- A simplified and centralized app stacks file `stacksfile.js` to include all website html snippets, javascript, or css files. The MAIN ideas are:\n  - Bundle all the js, css, and html files into few files, so the html won\'t get overwhelmed by a lot of \\<script\\> tags.\n  - Know where your source files coming from, and reorganize them if needed.\n- No limitation how you should structure your browser clients( html/js/css files).\n- URL refactor in html and css for CDN deploy. e.g. `todos.min.js` become `todos.min-jadqu9.js` and the url in html is refactored from `\'/js/todos.min.js\'` to `\'//cdn.yoursite.com/js/todos.min-jadqu0.js\'`. So, you can simply upload all of your public files to your cdn server.\n\n\n\nInstallation\n============================\n```\n$ npm -g install appstackr\n```\n\n\nHow to use\n==========\n\n1. There are two commands: `appstack` and `appbuild`. Check How to use them via `--help`. Use them on your project root directory, because it will use the `process.cwd()` as the base path.\n2. Put a `stacksfile.js` on your project root directory, Check `examples/site/stacksfile.js` for more information. It simply tell appstackr how to split your `js`, `css`, `html` files into different files.\n3. Put an optional `appstack-profile.json` on your project root directory. It will configure the `appstack` and `appbuild` command behavior.\n\n### An stacksfile.js example\n```\nmodule.exports = [\n  /*\n   * your site level css, it could be \n   * sass, less or plain css files\n   */\n  {\n    "name": "site",\n    "nature": "css",\n    "files": [\n        "less/mastnav.less"\n    ]\n  },\n\n  /*\n   * todos client stacks\n   */\n  {\n    "name": "todos",\n    "nature": "js",\n    "files": [\n      "client/todos/AppView.js"\n    ],\n    "commonjs": "browserify"\n  },\n  {\n    "name": "todos",\n    "nature": "css",\n    "files": [\n      "client/todos/less/todos.less"\n    ]\n  },\n  \n  {\n    "name": "todos",\n    "nature": "html",\n    "files": [\n      "client/todos/todos.html",\n      "client/todos/templates.html"\n    ]\n  },\n\n\n  /*\n   * put plain js files\n   */\n\n  {\n    "name": "bootstrap",\n    "nature": "js",\n    "files": [\n      "client/bootstrap/transition.js",\n      "client/bootstrap/alert.js",\n      "client/bootstrap/button.js",\n      "client/bootstrap/carousel.js",\n      "client/bootstrap/collapse.js",\n      "client/bootstrap/dropdown.js",\n      "client/bootstrap/modal.js",\n      "client/bootstrap/tooltip",\n      "client/bootstrap/popover",\n      "client/bootstrap/scrollspy.js",\n      "client/bootstrap/tab.js",\n      "client/bootstrap/affix.js"\n    ]\n  },\n  {\n    "name": "bootstrap",\n    "nature": "css",\n    "files": [\n      "less/bootstrap/bootstrap.less"\n    ]\n  },\n  {\n    "name": "bootstrap-theme",\n    "nature": "css",\n    "files": [\n      "less/bootstrap/theme.less"\n    ]\n  }\n]\n```\n\n### Default directory structure ###\n```\n|-- public\n|   |-- js\n|   |-- img\n|   |-- css\n|   \\-- asset\n| \n|-- views\n|   |\n|   \\-- snippet\n|\n|-- dist\n|-- stacksfile.js\n\\-- appstack-profile.json\n```\nWhile using command `appstack`, it will load the files described in `stacksfile.js`, concat, minifiy and write to the `public` and `views/snippet` directory.\n\nWhile using command `appbuild`, it will copy the `js`, `img`, `css`, and `asset` directories under `public` folder, add version control hash, and write to `dist/public` directory, and refactor the urls in `views` and `css` files.\n\nYou can define your own views file extension name, currently it is default to `.html` and `.swig`\n\nDemo\n========\ncd to the example directory `examples\\site`\n\n```$ node server.js```\n\nStart up the server to listen on port 3000\n\n```$ appstack```\n\nThe above command will create the stacks according to the `appstack.js` file\n\n```$ appbuild```\n\nThe above command will create the files under `dist` direcotry.\n\nYou can check `lib/profile.js` for more options and configure them on `appstack-profile`.\nFor example, to configure your CDN URL, simply add the following into the `appstack-profile.json`\n\n```\n"cdn": "//{Your cdn url}/"\n```\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: '51a004cc2b50f533f5e79dd54190002a5f385a0e',
+28 silly publish   bugs: { url: 'https://github.com/benpptung/appstackr/issues' },
+28 silly publish   homepage: 'https://github.com/benpptung/appstackr',
+28 silly publish   _id: 'appstackr@0.1.6',
+28 silly publish   _shasum: '900b4c3f66ae4bbae2471962d40a9a06e99f078c',
+28 silly publish   _from: './' }
+29 verbose request where is /appstackr
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id dee0ff45705206ca
+32 verbose url raw /appstackr
+33 verbose url resolving [ 'https://registry.npmjs.org/', './appstackr' ]
+34 verbose url resolved https://registry.npmjs.org/appstackr
+35 verbose request where is https://registry.npmjs.org/appstackr
+36 info trying registry request attempt 1 at 16:39:18
+37 http PUT https://registry.npmjs.org/appstackr
+38 http 502 https://registry.npmjs.org/appstackr
+39 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+39 verbose bad json <html><head>
+39 verbose bad json <title>502 Bad Gateway</title>
+39 verbose bad json </head><body>
+39 verbose bad json <h1>Bad Gateway</h1>
+39 verbose bad json <p>The proxy server received an invalid
+39 verbose bad json response from an upstream server.<br />
+39 verbose bad json </p>
+39 verbose bad json </body></html>
+40 error registry error parsing json
+41 info retry will retry, error on last attempt: SyntaxError: Unexpected token <
+41 info retry <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+41 info retry <html><head>
+41 info retry <title>502 Bad Gateway</title>
+41 info retry </head><body>
+41 info retry <h1>Bad Gateway</h1>
+41 info retry <p>The proxy server received an invalid
+41 info retry response from an upstream server.<br />
+41 info retry </p>
+41 info retry </body></html>
+42 info trying registry request attempt 2 at 16:44:50
+43 http PUT https://registry.npmjs.org/appstackr
+44 http 502 https://registry.npmjs.org/appstackr
+45 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+45 verbose bad json <html><head>
+45 verbose bad json <title>502 Bad Gateway</title>
+45 verbose bad json </head><body>
+45 verbose bad json <h1>Bad Gateway</h1>
+45 verbose bad json <p>The proxy server received an invalid
+45 verbose bad json response from an upstream server.<br />
+45 verbose bad json </p>
+45 verbose bad json </body></html>
+46 error registry error parsing json
+47 info retry will retry, error on last attempt: SyntaxError: Unexpected token <
+47 info retry <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+47 info retry <html><head>
+47 info retry <title>502 Bad Gateway</title>
+47 info retry </head><body>
+47 info retry <h1>Bad Gateway</h1>
+47 info retry <p>The proxy server received an invalid
+47 info retry response from an upstream server.<br />
+47 info retry </p>
+47 info retry </body></html>
+48 info trying registry request attempt 3 at 16:51:47
+49 http PUT https://registry.npmjs.org/appstackr
+50 http 502 https://registry.npmjs.org/appstackr
+51 verbose bad json <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+51 verbose bad json <html><head>
+51 verbose bad json <title>502 Bad Gateway</title>
+51 verbose bad json </head><body>
+51 verbose bad json <h1>Bad Gateway</h1>
+51 verbose bad json <p>The proxy server received an invalid
+51 verbose bad json response from an upstream server.<br />
+51 verbose bad json </p>
+51 verbose bad json </body></html>
+52 error registry error parsing json
+53 verbose headers { date: 'Wed, 07 Jan 2015 08:51:47 GMT',
+53 verbose headers   server: 'Apache',
+53 verbose headers   'content-length': '232',
+53 verbose headers   'keep-alive': 'timeout=10, max=50',
+53 verbose headers   connection: 'Keep-Alive',
+53 verbose headers   'content-type': 'text/html; charset=iso-8859-1' }
+54 error publish Failed PUT 502
+55 error SyntaxError: Unexpected token <
+55 error <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+55 error <html><head>
+55 error <title>502 Bad Gateway</title>
+55 error </head><body>
+55 error <h1>Bad Gateway</h1>
+55 error <p>The proxy server received an invalid
+55 error response from an upstream server.<br />
+55 error </p>
+55 error </body></html>
+55 error
+55 error     at Object.parse (native)
+55 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:274:23)
+55 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+55 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
+55 error     at Request.emit (events.js:98:17)
+55 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+55 error     at Request.emit (events.js:117:20)
+55 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+55 error     at IncomingMessage.emit (events.js:117:20)
+55 error     at _stream_readable.js:944:16
+56 error If you need help, you may report this *entire* log,
+56 error including the npm and node versions, at:
+56 error     <http://github.com/npm/npm/issues>
+57 error System Darwin 13.4.0
+58 error command "node" "/usr/local/bin/npm" "publish" "./"
+59 error cwd /Users/benpptung/Projects/command-lib/appstackr
+60 error node -v v0.10.35
+61 error npm -v 1.4.28
+62 error type unexpected_token
+63 verbose exit [ 1, true ]

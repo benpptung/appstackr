@@ -18,7 +18,7 @@ tasklist.clean();
 describe('tasklist', function(){
 
   beforeEach(function(){
-    tasks = require(path.join(__dirname, 'site', 'stacksfile.js'));
+    tasks = require(path.join(__dirname, 'site', 'stacks.js'));
     spy = sandbox.spy(function(done){
       done();
     });

@@ -24,8 +24,8 @@ var webmake_file_hash = 'd091813a3a27e39032e9b7611903d0d293b9c1b3',
     concat_files_hash = '5513854f28f4c426832b3832acb42bc4006d527a',
     css_lessfile_hash = '904fc52b973fecb657dedf20554f4e1c0846d2fd',
     css_lessfiles_hash = 'a15c2080224887c358ca1cefc74c3c1b2fce2ccb',
-    css_scssfiles_hash = '3726cc9e1b35fb8581abeb8f6088a6e491852024',
-    css_lesscss_hash = 'd61b4fe175b1993a5257f7752df749b34bce16b9',
+    css_scssfiles_hash = 'aa54b59de523f02252a373b4f3f741ffafbd66d3',
+    css_lesscss_hash = '718849a8f5217835bdb7db37dcdb04c469c640e9',
     minified_css_beautify_hash = '2676928e861685157761ddac3c58b12cdfa0a992',
     minified_cleancss_hash = 'd6faa3c3ba5cdfa741d1607a11e06831c6ea9802',
     minified_ycssmin_hash = 'd176de20cc45dc1dcf89f08025db1c4941794a01',
@@ -138,33 +138,14 @@ describe('utils', function(){
       })
     });
 
-    it('could disable autoprefixer and render scss files into css ', function(done){
-
-      var browsers_config = profile.autoprefixer;
-      profile.autoprefixer = false;
-
-      runner([scss_1_file, scss_2_file], function(err, hash){
-        if (err) return done(err);
-        hash.should.be.equal('aa54b59de523f02252a373b4f3f741ffafbd66d3');
-        profile.autoprefixer = browsers_config;
-        done();
-      })
-    });
-
-
-    it('could disable autoprefixer and compile css, less, scss at the same time into css', function(done){
-
-      var browsers_config = profile.autoprefixer;
-      profile.autoprefixer = false;
+    it('could add autoprefixer if browsers arg', function(done){
+      var runner = async.compose( sha1 , css.partial(undefined, '> 1%, Firefox >= 3, IE 7', undefined));
 
       runner([bootstrap_file, scss_1_file, scss_2_file, theme_file, css_file], function(err, hash){
-        hash.should.be.equal('718849a8f5217835bdb7db37dcdb04c469c640e9');
-        profile.autoprefixer = browsers_config;
+        hash.should.be.equal('eadb33717eb5f22a7900d5b2694573e6a7d696c4');
         done();
       })
     });
-
-
 
   });
 

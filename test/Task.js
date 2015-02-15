@@ -41,6 +41,7 @@ describe('Task', function () {
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
+        assert.equal(task.autoprefixer, undefined);
         task.concat.should.be.true;
         done();
       })
@@ -71,6 +72,7 @@ describe('Task', function () {
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
+        assert.equal(task.autoprefixer, undefined);
         task.concat.should.be.true;
         done();
       })
@@ -81,10 +83,22 @@ describe('Task', function () {
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
+        assert.equal(task.autoprefixer, undefined);
         task.concat.should.be.true;
         done();
       })
     });
+
+    it('should create task with autoprefixer', function(done){
+      Task.create(stacks['stack-autoprefixer'], function(err, task){
+        task.name.should.be.equal('with-autoprefixer');
+        task.nature.should.be.equal('css');
+        task.files.should.have.length(2);
+        task.autoprefixer.should.be.equal('> 5%, IE 8');
+        done();
+      })
+    });
+
     it('should callback error, if commonjs stack nature is not js or jhtml', function(done){
       Task.create(stacks.stack8, function(err, task){
         err.should.have.property('message', 'css will not have commonjs interface in stack:impossible-stack');

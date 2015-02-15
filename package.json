@@ -1,6 +1,6 @@
 {
   "name": "appstackr",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "A simplified build tool to pack html, js, css, and other assets from html, html templates, js, scss, less with autoprefixer support",
   "bin": {
     "appstack": "./bin/appstack.js",

@@ -156,20 +156,43 @@ You can define your own views file extension name, currently it is default to `.
 
 Demo
 ========
-cd to the example directory `examples\site`
 
-```$ node server.js```
+```$ cd examples/site```
 
-Start up the server to listen on port 3000
+
+
+create the stacks according to the `stacks.js` file in the site root directory
 
 ```$ ../../bin/appstack```
 
-The above command will create the stacks according to the `stacks.js` file in the root directory
+
+start the development server listening on port 3000
+
+```$ node server.js```
+
+
+refactor the static assests with version control hash
+like the following
+
 
 ```$ ../../bin/appbuild```
 
-The above command will create the files under `dist` direcotry. check the `examples/site/dist/views/todo-mvc.html`
-the `todo.min.css` or `todo.min.js` is with version hash now.
+
+The above command will create the files under `dist` direcotry. e.g. check the `examples/site/dist/views/todo-mvc.html` view file, 
+the `todo.min.css` is changed to`todos.min-uvrtjr.css` now.
+
+
+Now, start the dummy production server listening on port 3000
+
+```$ NODE_ENV=production node server.js ```
+
+the server is now using `//localhost:3000/css/todos.min-uvrtjr.css` instead of `css/todos.min.css` in the `http://localhost:3000/TodoMVC/` page.
+
+
+
+
+More Options
+=============
 
 You can check `lib/profile.js` for more options and configure them on `appstackr-settings.json`.
 For example, to configure your CDN URL, simply add the following into the `appstackr-settings.json`

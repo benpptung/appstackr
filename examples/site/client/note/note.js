@@ -6,7 +6,7 @@ jQuery(function($){
         minConfirms = 2,
         noticeDisabled = window.noticeDisabled || false,
         now = new Date(),
-        expireDate = new Date(2014, 12, 31);
+        expireDate = new Date(2100, 12, 31);
 
     if (!confirms) confirms = 0;
 
@@ -21,7 +21,7 @@ jQuery(function($){
     }
 
     $(document).on('click', '[data-confirm="vacation"]', function(){
-        Cookies.set('confirms', ++confirms , {expires: new Date(2014, 12, 31)});
+        Cookies.set('confirms', ++confirms , {expires: new Date(2100, 12, 31)});
         $notice.trigger($.Event('click.confirm.vacation'));
     });
 

@@ -162,13 +162,14 @@ cd to the example directory `examples\site`
 
 Start up the server to listen on port 3000
 
-```$ appstack```
+```$ ../../bin/appstack```
 
-The above command will create the stacks according to the `appstack.js` file
+The above command will create the stacks according to the `stacks.js` file in the root directory
 
-```$ appbuild```
+```$ ../../bin/appbuild```
 
-The above command will create the files under `dist` direcotry.
+The above command will create the files under `dist` direcotry. check the `examples/site/dist/views/todo-mvc.html`
+the `todo.min.css` or `todo.min.js` is with version hash now.
 
 You can check `lib/profile.js` for more options and configure them on `appstackr-settings.json`.
 For example, to configure your CDN URL, simply add the following into the `appstackr-settings.json`

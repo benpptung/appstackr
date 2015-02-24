@@ -1,7 +1,7 @@
 appstackr
 =========
 
->appstackr is a simplified build tool for html template, js, css, images. It aims to pre-build the files into static assets and ready to publish to cdn storage.
+appstackr is a simplified build tool for html template, js, css, images. It aims to pre-build the files into static assets and ready to publish to cdn storage.
 
 
 
@@ -9,10 +9,13 @@ Features
 ========
 
 - A simplified and centralized app stacks file `stacks.js` to include all website html snippets, javascript, or css files. The MAIN ideas are:
-  - Bundle all the js, css, and html files into few files, so the html won't get overwhelmed by a lot of \<script\> tags.
-  - Know where your source files coming from, and reorganize them if needed.
+
+  >Group your `client-side component files` by folder or module. That said, a TodoApp might include some js, css(or less, sass), and html(or template files, such as swig, handlebars) files. Put all of them under the same folder or in an external module, and "stacking" them as you wish in the `stacks.js` file. And in your public facing site or app,  it can be very simplified to include only `site.min.css`, `bundle.min.js` and `app-for-current-page.min.js`.
+   
 - Put all of your settings on the `appstackr-settings.json` to modify the default settings in `lib/profile.js`
+
 - No limitation how you should structure your browser clients( html/js/css files).
+
 - URL refactor in html and css for CDN deploy. e.g. `todos.min.js` become `todos.min-jadqu9.js` and the url in html is refactored from `'/js/todos.min.js'` to `'//cdn.yoursite.com/js/todos.min-jadqu0.js'`. So, you can simply upload all of your public files to your cdn server.
 
 

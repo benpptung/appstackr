@@ -37,8 +37,8 @@ function guid() {
 // with a meaningful name, like the name you'd give a table.
 // window.Store is deprectated, use Backbone.LocalStorage instead
 Backbone.LocalStorage = window.Store = function(name) {
-  this.name = name;
-  var store = this.localStorage().getItem(this.name);
+  this.filename = name;
+  var store = this.localStorage().getItem(this.filename);
   this.records = (store && store.split(",")) || [];
 };
 
@@ -46,7 +46,7 @@ _.extend(Backbone.LocalStorage.prototype, {
 
   // Save the current state of the **Store** to *localStorage*.
   save: function() {
-    this.localStorage().setItem(this.name, this.records.join(","));
+    this.localStorage().setItem(this.filename, this.records.join(","));
   },
 
   // Add a model, giving it a (hopefully)-unique GUID, if it doesn't already
@@ -56,7 +56,7 @@ _.extend(Backbone.LocalStorage.prototype, {
       model.id = guid();
       model.set(model.idAttribute, model.id);
     }
-    this.localStorage().setItem(this.name+"-"+model.id, JSON.stringify(model));
+    this.localStorage().setItem(this.filename+"-"+model.id, JSON.stringify(model));
     this.records.push(model.id.toString());
     this.save();
     return this.find(model);
@@ -64,7 +64,7 @@ _.extend(Backbone.LocalStorage.prototype, {
 
   // Update a model by replacing its copy in `this.data`.
   update: function(model) {
-    this.localStorage().setItem(this.name+"-"+model.id, JSON.stringify(model));
+    this.localStorage().setItem(this.filename+"-"+model.id, JSON.stringify(model));
     if (!_.include(this.records, model.id.toString()))
       this.records.push(model.id.toString()); this.save();
     return this.find(model);
@@ -72,14 +72,14 @@ _.extend(Backbone.LocalStorage.prototype, {
 
   // Retrieve a model from `this.data` by id.
   find: function(model) {
-    return this.jsonData(this.localStorage().getItem(this.name+"-"+model.id));
+    return this.jsonData(this.localStorage().getItem(this.filename+"-"+model.id));
   },
 
   // Return the array of all models currently in storage.
   findAll: function() {
     return _(this.records).chain()
       .map(function(id){
-        return this.jsonData(this.localStorage().getItem(this.name+"-"+id));
+        return this.jsonData(this.localStorage().getItem(this.filename+"-"+id));
       }, this)
       .compact()
       .value();
@@ -89,7 +89,7 @@ _.extend(Backbone.LocalStorage.prototype, {
   destroy: function(model) {
     if (model.isNew())
       return false
-    this.localStorage().removeItem(this.name+"-"+model.id);
+    this.localStorage().removeItem(this.filename+"-"+model.id);
     this.records = _.reject(this.records, function(id){
       return id === model.id.toString();
     });

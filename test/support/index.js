@@ -15,7 +15,7 @@ var path = require('path'),
 // make profile to see process.cwd() in the test/site directory
 process.chdir(cwd_profile);
 
-var support = module.exports = require('../../lib/profile');
+var support = module.exports = require('../../lib/globals/config');
 
 var viewsReg = new RegExp(RegExp.quote(support.views) + "(.+)$"),
     publicReg = new RegExp(RegExp.quote(support.public) + "(.+)$");
@@ -59,8 +59,8 @@ support.moveDistFiles = function(callback){
       worker = function(task, done){
         glob(task.findpath, function(err, files){
           async.each(files, function(file, next){
-            var dirpath = task.name == 'views' ? support.distViews : support.distPublic,
-                reg = task.name == 'views' ? viewsReg : publicReg,
+            var dirpath = task.filename == 'views' ? support.distViews : support.distPublic,
+                reg = task.filename == 'views' ? viewsReg : publicReg,
                 dest = path.join(dirpath, file.match(reg)[1]);
 
             mkdirp(path.dirname(dest), function(){

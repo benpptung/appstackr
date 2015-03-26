@@ -12,7 +12,7 @@ Features
 
   >Group your `client-side component files` by folder or module. That said, a TodoApp might include some js, css(or less, sass), and html(or template files, such as swig, handlebars) files. Put all of them under the same folder or in an external module, and "stacking" them as you wish in the `stacks.js` file. And in your public facing site or app,  it can be very simplified to include only `site.min.css`, `bundle.min.js` and `app-for-current-page.min.js`.
    
-- Put all of your settings on the `appstackr-settings.json` to modify the default settings in `lib/profile.js`
+- Put all of your settings on the `appstackr-settings.json` to modify the default settings in `lib/config.js`
 
 - No limitation how you should structure your browser clients( html/js/css files).
 
@@ -197,7 +197,7 @@ the server is now using `//localhost:3000/css/todos.min-uvrtjr.css` instead of `
 More Options
 =============
 
-You can check `lib/profile.js` for more options and configure them on `appstackr-settings.json`.
+You can check `lib/config.js` for more options and configure them on `appstackr-settings.json`.
 For example, to configure your CDN URL, simply add the following into the `appstackr-settings.json`
 
 ```

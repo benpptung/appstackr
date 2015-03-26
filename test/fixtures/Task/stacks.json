@@ -1,6 +1,6 @@
 {
   "stack1": {
-    "name": "todos",
+    "filename": "todos",
     "nature": "js",
     "files": [
       "client/todo/VAppView.js"
@@ -8,14 +8,14 @@
     "commonjs": "webmake"
   },
   "stack2": {
-    "name": "todos",
+    "filename": "todos",
     "nature": "css",
     "files": [
       "less/app-todo/todos.css"
     ]
   },
   "stack3": {
-    "name": "alert",
+    "filename": "alert",
     "nature": "jhtml",
     "files": [
       "client/alert/transition.js",
@@ -23,28 +23,28 @@
     ]
   },
   "stack4": {
-    "name": "bs",
+    "filename": "bs",
     "nature": "js",
     "files": [
       "client/bs/**"
     ]
   },
   "stack5": {
-    "name": "bootstrap",
+    "filename": "bootstrap",
     "nature": "css",
     "files": [
       "less/bootstrap/bootstrap.less"
     ]
   },
   "stack6": {
-    "name": "bootstrap-theme",
+    "filename": "bootstrap-theme",
     "nature": "css",
     "files": [
       "less/theme/theme.less"
     ]
   },
   "stack7": {
-    "name": "invalid-commonjs",
+    "filename": "invalid-commonjs",
     "nature": "js",
     "files": [
         "client/alert/transition.js",
@@ -53,7 +53,7 @@
     "commonjs": "browserify"
   },
   "stack8": {
-    "name": "impossible-stack",
+    "filename": "impossible-stack",
     "nature": "css",
     "files": [
       "less/**"
@@ -62,7 +62,7 @@
   },
 
   "stack-no-prefixer": {
-    "name": "no-autoprefixer",
+    "filename": "no-autoprefixer",
     "nature": "css",
     "files": [
       "less/theme/theme.less",
@@ -71,7 +71,7 @@
   },
 
   "stack-autoprefixer": {
-    "name": "with-autoprefixer",
+    "filename": "with-autoprefixer",
     "nature": "css",
     "files": [
       "less/theme/theme.less",

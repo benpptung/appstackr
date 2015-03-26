@@ -97,7 +97,7 @@ describe('tasklist', function(){
 
       it('should show warning if task.run() callback error', function(done){
         tasklist.addTask({
-          name: 'failed-app',
+          filename: 'failed-app',
           nature: 'js',
           files: ['client/*.js'],
           run: function(done){

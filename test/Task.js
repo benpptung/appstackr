@@ -27,7 +27,7 @@ describe('Task', function () {
   describe('#create()', function(){
     it('should create task from stack #1', function(done){
       Task.create(stacks.stack1, function(err, task){
-        task.name.should.be.equal('todos');
+        task.filename.should.be.equal('todos');
         task.nature.should.be.equal('js');
         task.files.should.have.length(1);
         task.commonjs.should.be.equal('webmake');
@@ -37,7 +37,7 @@ describe('Task', function () {
     });
     it('should create task from stack #2', function(done){
       Task.create(stacks.stack2, function(err, task){
-        task.name.should.be.equal('todos');
+        task.filename.should.be.equal('todos');
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
@@ -48,7 +48,7 @@ describe('Task', function () {
     });
     it('should create task from stack #3', function(done){
       Task.create(stacks.stack3, function(err, task){
-        task.name.should.be.equal('alert');
+        task.filename.should.be.equal('alert');
         task.nature.should.be.equal('jhtml');
         task.files.should.have.length(2);
         assert.equal(task.commonjs, undefined);
@@ -58,7 +58,7 @@ describe('Task', function () {
     });
     it('should create task from stack #4', function(done){
       Task.create(stacks.stack4, function(err, task){
-        task.name.should.be.equal('bs');
+        task.filename.should.be.equal('bs');
         task.nature.should.be.equal('js');
         task.files.should.have.length(10);
         assert.equal(task.commonjs, undefined);
@@ -68,7 +68,7 @@ describe('Task', function () {
     });
     it('should create task from stack #5', function(done){
       Task.create(stacks.stack5, function(err, task){
-        task.name.should.be.equal('bootstrap');
+        task.filename.should.be.equal('bootstrap');
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
@@ -79,7 +79,7 @@ describe('Task', function () {
     });
     it('should create task from stack #6', function(done){
       Task.create(stacks.stack6, function(err, task){
-        task.name.should.be.equal('bootstrap-theme');
+        task.filename.should.be.equal('bootstrap-theme');
         task.nature.should.be.equal('css');
         task.files.should.have.length(1);
         assert.equal(task.commonjs, undefined);
@@ -91,7 +91,7 @@ describe('Task', function () {
 
     it('should create task with autoprefixer', function(done){
       Task.create(stacks['stack-autoprefixer'], function(err, task){
-        task.name.should.be.equal('with-autoprefixer');
+        task.filename.should.be.equal('with-autoprefixer');
         task.nature.should.be.equal('css');
         task.files.should.have.length(2);
         task.autoprefixer.should.be.equal('> 5%, IE 8');

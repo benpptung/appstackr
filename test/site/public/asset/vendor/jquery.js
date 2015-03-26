@@ -1738,7 +1738,7 @@ jQuery.fn.extend({
 				if ( elem.nodeType === 1 && !jQuery._data( elem, "parsedAttrs" ) ) {
 					attr = elem.attributes;
 					for ( l = attr.length; i < l; i++ ) {
-						name = attr[i].name;
+						name = attr[i].filename;
 
 						if ( !name.indexOf( "data-" ) ) {
 							name = jQuery.camelCase( name.substring(5) );
@@ -2500,7 +2500,7 @@ boolHook = {
 if ( !getSetAttribute ) {
 
 	fixSpecified = {
-		name: true,
+		filename: true,
 		id: true,
 		coords: true
 	};
@@ -7190,7 +7190,7 @@ jQuery.fn.extend({
 			return this.elements ? jQuery.makeArray( this.elements ) : this;
 		})
 		.filter(function(){
-			return this.name && !this.disabled &&
+			return this.filename && !this.disabled &&
 				( this.checked || rselectTextarea.test( this.nodeName ) ||
 					rinput.test( this.type ) );
 		})
@@ -7201,9 +7201,9 @@ jQuery.fn.extend({
 				null :
 				jQuery.isArray( val ) ?
 					jQuery.map( val, function( val, i ){
-						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+						return { name: elem.filename, value: val.replace( rCRLF, "\r\n" ) };
 					}) :
-					{ name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+					{ name: elem.filename, value: val.replace( rCRLF, "\r\n" ) };
 		}).get();
 	}
 });
@@ -7228,7 +7228,7 @@ jQuery.param = function( a, traditional ) {
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 		// Serialize the form elements
 		jQuery.each( a, function() {
-			add( this.name, this.value );
+			add( this.filename, this.value );
 		});
 
 	} else {

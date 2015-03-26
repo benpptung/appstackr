@@ -1,10 +1,11 @@
 {
   "name": "appstackr",
-  "version": "0.2.1",
-  "description": "A simplified build tool to pack html, js, css, and other assets from html, html templates, js, scss, less with autoprefixer support",
+  "version": "0.2.2",
+  "description": "A simplified build tool to pack view tempalte files( e.g. html, swig, mustache ), js, css( e.g. scss, less, styl) with files watch, browser sync and auto-prefixer features. In addition, refactor url for cdn deployment",
   "bin": {
     "appstack": "./bin/appstack.js",
-    "appbuild": "./bin/appbuild.js"
+    "appbuild": "./bin/appbuild.js",
+    "appwatch": "./bin/appwatch.js"
   },
   "keywords": [
     "assets",
@@ -13,6 +14,8 @@
     "javascript",
     "sass",
     "less",
+    "stylus",
+    "browser-sync",
     "minifier",
     "cdn"
   ],
@@ -29,26 +32,29 @@
   "directories": "./bin",
   "dependencies": {
     "async": "^0.9.0",
-    "autoprefixer-core": "^5.1.5",
+    "autoprefixer-core": "^5.1.7",
     "base-converter": "~1.1.2",
-    "browserify": "^8.1.3",
+    "browser-sync": "^2.2.4",
+    "browserify": "^9.0.3",
     "buffer-crc32": "~0.2.1",
-    "clean-css": "^3.0.10",
-    "commander": "~2.1.0",
+    "clean-css": "^3.1.6",
+    "colors": "^1.0.3",
+    "commander": "^2.7.1",
+    "debug": "^2.1.3",
+    "gaze": "^0.5.1",
     "glob": "~3.2.8",
-    "html-minifier": "~0.5.5",
     "less": "^2.4.0",
     "mkdirp": "~0.3.5",
     "node-sass": "^2.0.1",
     "node.extend": "~1.0.9",
-    "prettyjson": "^1.1.0",
     "rimraf": "~2.2.6",
-    "uglify-js": "^2.4.16",
-    "ycssmin": "~1.0.1"
+    "stylus": "^0.50.0",
+    "uglify-js": "^2.4.17"
   },
   "devDependencies": {
     "express": "~3.4.7",
     "mocha": "^2.1.0",
+    "ractive": "^0.7.1",
     "should": "~3.1.2",
     "sinon": "~1.8.1",
     "swig": "~1.3.2"

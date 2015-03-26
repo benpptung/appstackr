@@ -4,8 +4,8 @@
  * Time: PM6:36
  */
 
-exports.name = 'calc';
+exports.filename = 'calc';
 
 exports.get = function(){
-  return this.name;
+  return this.filename;
 }

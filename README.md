@@ -55,7 +55,7 @@ module.exports = [
   /*
    * you can simply mix less, scss and css together...
    * nature: css ==> css file
-   * nature: chtml ==> for css snippet to embed in html
+   * nature: chtml ==> for css components to embed in html
    */
   {
     "name": "site",
@@ -145,13 +145,13 @@ module.exports = [
 | 
 |-- views
 |   |
-|   \-- snippet
+|   \-- components
 |
 |-- dist
 |-- stacks.js
 \-- appstackr-settings.json
 ```
-While using command `appstack`, it will load the files described in `stacks.js`, concat, minifiy and write to the `public` and `views/snippet` directory.
+While using command `appstack`, it will load the files described in `stacks.js`, concat, minifiy and write to the `public` and `views/components` directory.
 
 While using command `appbuild`, it will copy the `js`, `img`, `css`, and `asset` directories under `public` folder, add version control hash, and write to `dist/public` directory, and refactor the urls in `views` and `css` files.
 

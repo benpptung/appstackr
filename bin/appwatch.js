@@ -3,6 +3,7 @@
 var util = require('util'),
     inspect = util.inspect,
     format = util.format;
+var net = require('net');
 
 var program = require('commander');
 var browserSync = require('browser-sync');
@@ -17,9 +18,10 @@ var version = require('../package.json').version;
 
 var options = {
   filesWatch: true,
-  browserSync: true,
-  warning: false
+  browserSync: true
 };
+var proxy_href;
+var client;
 
 program
   .version(version)
@@ -39,14 +41,60 @@ if (program.browserSync) {
 
 config.final(options, 'appwatch');
 
-stacklist
-  .options(config)
-  .on('error', error)
-  .on('loaded', loaded)
-  .on('reloaded', function(tasks) {
-    utils.message('stacks.js'.magenta + ' reloaded. new stacks added' + '%d'.yellow, tasks.length);
-  })
-  .load(stackfile);
+if (config.bsync.proxy) {
+  proxy_href = config.bsync.proxy.target || config.bsync.proxy;
+  proxy_href = proxy_href.split(':');
+  retry = 3;
+  /*setTimeout(function () {
+    client = net.connect({host: proxy_href[0], port: proxy_href[1] || 80 });
+    client
+      .on('connect', function () {
+
+        start();
+
+        client.destroy();
+      })
+      .on('error', function(error) {
+
+        utils.warn('%s connect %s.', error.toString().red, proxy_href.join(':').red);
+      });
+  }, 100);*/
+
+  req();
+
+  function req() {
+    var client = net.connect({host: proxy_href[0], port: proxy_href[1] || 80});
+    client
+      .on('connect', function () {
+        start();
+        client.destroy();
+      })
+      .on('error', function() {
+
+        client.destroy();
+        retry--;
+        if (retry > 0) {
+          return setTimeout(req, 100);
+        }
+        utils.warn('%s connect %s.', error.toString().red, proxy_href.join(':').red);
+      })
+  }
+
+}
+else {
+  start();
+}
+
+function start() {
+  stacklist
+    .options(config)
+    .on('error', error)
+    .on('loaded', loaded)
+    .on('reloaded', function(tasks) {
+      utils.message('stacks.js'.magenta + ' reloaded. new stacks added: ' + '%d'.green, tasks.length);
+    })
+    .load(stackfile);
+}
 
 function loaded(tasks) {
   utils.message('All stacks loaded. '.yellow + 'stacks.js'.magenta + ' and files watching started.'.yellow);
@@ -59,7 +107,7 @@ function loaded(tasks) {
 }
 
 function error(error) {
-  utils.message(error.toString().red);
+  utils.warn(error);
 }
 
 function init_browser_sync(options) {

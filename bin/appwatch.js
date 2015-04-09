@@ -20,6 +20,8 @@ var options = {
   filesWatch: true,
   browserSync: true
 };
+var retry = 5;
+var total = retry;
 var proxy_href;
 var client;
 
@@ -44,7 +46,6 @@ config.final(options, 'appwatch');
 if (config.bsync.proxy) {
   proxy_href = config.bsync.proxy.target || config.bsync.proxy;
   proxy_href = proxy_href.split(':');
-  retry = 3;
   /*setTimeout(function () {
     client = net.connect({host: proxy_href[0], port: proxy_href[1] || 80 });
     client
@@ -68,15 +69,16 @@ if (config.bsync.proxy) {
       .on('connect', function () {
         start();
         client.destroy();
+        utils.message('tried %s times', (total - retry) + 1);
       })
-      .on('error', function() {
+      .on('error', function(error) {
 
         client.destroy();
         retry--;
         if (retry > 0) {
-          return setTimeout(req, 100);
+          return setTimeout(req, 500);
         }
-        utils.warn('%s connect %s.', error.toString().red, proxy_href.join(':').red);
+        utils.warn('%s connect %s. after %s retries', error.toString().red, proxy_href.join(':').red, (retry + '').red);
       })
   }
 

@@ -75,6 +75,7 @@ if (config.bsync.proxy) {
 
         client.destroy();
         retry--;
+        utils.message('connect proxy server failed. retry again. %s times remains.'.green, retry);
         if (retry > 0) {
           return setTimeout(req, 500);
         }

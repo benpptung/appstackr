@@ -43,11 +43,12 @@ Edit package.json script property as following if express project
 
 Then, you can run appwatch command as following:
 ( need npm 2.x.x above to add arg )
-```
+```s
 $ npm run bsync
 ```
 
 It will start browser-sync and watch all the files in stacks.js, including stacks.js itself.
+see example https://github.com/benpptung/generator
 
 How to use
 ==========

@@ -1,7 +1,7 @@
 {
   "name": "appstackr",
-  "version": "0.2.2",
-  "description": "A simplified build tool to pack view tempalte files( e.g. html, swig, mustache ), js, css( e.g. scss, less, styl) with files watch, browser sync and auto-prefixer features. In addition, refactor url for cdn deployment",
+  "version": "0.3.0",
+  "description": "A simplified build tool to pack tempalte files( e.g. html, swig, mustache ), js/jsx, css( e.g. scss, less, styl) with files watch, browser sync and auto-prefixer features. In addition, refactor url for cdn deployment",
   "bin": {
     "appstack": "./bin/appstack.js",
     "appbuild": "./bin/appbuild.js",

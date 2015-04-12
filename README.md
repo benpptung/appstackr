@@ -8,6 +8,8 @@ appstackr is a simplified build tool for html template, js, css, images. It aims
 Features
 ========
 
+- Support browserify, browser-sync and auto-prefixer.
+
 - A simplified and centralized app stacks file `stacks.js` to include all website html snippets, javascript, or css files. The MAIN ideas are:
 
   >Group your `client-side component files` by folder or module. That said, a TodoApp might include some js, css(or less, sass), and html(or template files, such as swig, handlebars) files. Put all of them under the same folder or in an external module, and "stacking" them as you wish in the `stacks.js` file. And in your public facing site or app,  it can be very simplified to include only `site.min.css`, `bundle.min.js` and `app-for-current-page.min.js`.
@@ -27,20 +29,25 @@ Install to the project as local dependency
 $ npm install appstackr --save-dev
 ```
 
-Edit package.json script property as following
+Edit package.json script property as following if express project
 ```
 "scripts": {
+    "start"   : "node ./bin/www",
     "appstack": "appstack",
-    "appbuild": "appbuild"
+    "appbuild": "appbuild",
+    "appwatch": "appwatch -i --server 0.0.0.0:3000",
+    "devel"   : "DEBUG={app_name}:* node ./bin/www",
+    "bsync"   : "npm run devel & npm run appwatch"
      }
 ```
 
-Then, you can run appstack or appbuild command as following:
+Then, you can run appwatch command as following:
 ( need npm 2.x.x above to add arg )
 ```
-$ npm run appstack -- -h
+$ npm run bsync
 ```
 
+It will start browser-sync and watch all the files in stacks.js, including stacks.js itself.
 
 How to use
 ==========

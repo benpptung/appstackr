@@ -1,6 +1,6 @@
 {
   "name": "appstackr",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A simplified build tool to pack tempalte files( e.g. html, swig, mustache ), js/jsx, css( e.g. scss, less, styl) with files watch, browser sync and auto-prefixer features. In addition, refactor url for cdn deployment",
   "bin": {
     "appstack": "./bin/appstack.js",

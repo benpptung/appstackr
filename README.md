@@ -30,14 +30,38 @@ Edit package.json script property as following if express project
      }
 ```
 
-Then, run the following command:
+Run command - Enjoy Multiple Screens Live Reload & app building at the same time.
 ```
 $ npm run bsync
 ```
 
 It will start the server in DEBUG mode listening on port 3000. Then, start files watch on the files described in `stacks.js`, including `stacks.js` itself. Then, start `browser-sync` and proxy to `0.0.0.0:3000`
 
-see example at: https://github.com/benpptung/generator
+##### Example: https://github.com/benpptung/generator
+
+Make sure express-generator is not installed, or remove it temporally
+
+Install the generator:
+```
+$ npm install -g benpptung/generator
+```
+
+create the app:
+```
+$ express /tmp/foo && cd /tmp/foo
+```
+
+Install dependencies:
+```
+$ npm install
+```
+
+Rock and Roll
+```
+$ npm run bsync
+```
+
+
 
 ###### No initial stacking
 

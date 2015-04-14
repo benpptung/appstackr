@@ -9,7 +9,7 @@ var sinon = require('sinon'),
     profile = require('./support'),
     assert = require('assert');
 
-describe('Task', function () {
+describe.skip('Task', function () {
   var sandbox,
       stacks;
 

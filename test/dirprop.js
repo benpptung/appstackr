@@ -7,7 +7,7 @@
 var profile = require('./support'),
     dirprop = require('../lib/dirprop');
 
-describe('dirprop()', function(){
+describe.skip('dirprop()', function(){
 
   it('should have correct dir props of js dir', function(){
     var jsDirProp = dirprop('js');

@@ -3,8 +3,8 @@
  * Date: 2014/2/9
  * Time: PM12:13
  */
-var profile = require('./support'),
-    tasklist = require('../lib/tasklist'),
+/*var profile = require('./support'),
+    //tasklist = require('../lib/tasklist'),
     tasks,
     fs = require('fs'),
     path = require('path'),
@@ -13,9 +13,9 @@ var profile = require('./support'),
     sandbox = sinon.sandbox.create(),
     spy;
 
-tasklist.clean();
+tasklist.clean();*/
 
-describe('tasklist', function(){
+describe.skip('tasklist', function(){
 
   beforeEach(function(){
     tasks = require(path.join(__dirname, 'site', 'stacks.js'));

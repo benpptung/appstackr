@@ -11,15 +11,15 @@ var path = require('path'),
 
 
 
-describe('profile', function () {
+describe.skip('config', function () {
 
   var cwd = process.cwd();
   var base_path = path.join(__dirname, 'site');
-  var profile;
+  var config;
 
   beforeEach(function() {
     process.chdir(base_path);
-    profile = require('../lib/globals/config');
+    config = require('../lib/globals/config');
   });
 
   afterEach(function() {
@@ -36,7 +36,7 @@ describe('profile', function () {
     config.public.should.be.equal(path.join(base_path, 'public'));
     config.views.should.be.equal(path.join(base_path, 'views'));
     config.js.should.be.equal(path.join(base_path, 'public', 'js'));
-    config.snippet.should.be.equal(path.join(base_path, 'views', 'snippet'));
+    config.components.should.be.equal(path.join(base_path, 'views', 'components'));
     config.css.should.be.equal(path.join(base_path, 'public', 'css'));
     config.img.should.be.equal(path.join(base_path, 'public', 'img'));
     config.asset.should.be.equal(path.join(base_path, 'public', 'asset'));
@@ -45,6 +45,6 @@ describe('profile', function () {
     config.distViews.should.be.equal(path.join(base_path, 'dist', 'views'));
   });
 
-  
+
 
 });

@@ -14,8 +14,7 @@ var profile = require('./support'),
     sinon = require('sinon'),
     glob = require('glob'),
     sha1 = profile.sha1,
-    async = require('async'),
-    prettyjson = require('prettyjson');
+    async = require('async');
 
 var webmake_file_hash = 'd091813a3a27e39032e9b7611903d0d293b9c1b3',
     webmake_files_hash = 'a76a9ac35ac8a612a2c723e959553500642319ca',
@@ -52,7 +51,7 @@ var main = path.join(__dirname, 'fixtures', 'utils', 'commonjs', 'main.js'),
     ejs_login = path.join(__dirname, 'fixtures', 'utils', 'views', 'login.ejs'),
     ejs_foot = path.join(__dirname, 'fixtures', 'utils', 'views', 'foot.ejs');
 
-describe('utils', function(){
+describe.skip('utils', function(){
   describe('Function.prototype.partial()', function(){
     it('closure created by partial could be called many times.', function(){
       var add = function(a, b, c){

@@ -4,14 +4,13 @@
  */
 var profile = require('./support'),
     appstack = require('../lib/appstack'),
-    tasklist = require('../lib/tasklist'),
     utils = require('../lib/utils'),
     sinon = require('sinon'),
     path = require('path');
 
 var sandbox;
 
-describe('appstack', function () {
+describe.skip('appstack', function () {
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create();

@@ -9,7 +9,7 @@ var profile = require('./support'),
     sinon = require(('sinon')),
     sandbox;
 
-describe('appbuild()', function () {
+describe.skip('appbuild()', function () {
 
   beforeEach(function(){
     sandbox = sinon.sandbox.create();

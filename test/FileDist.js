@@ -11,11 +11,10 @@ var profile = require('./support'),
     urllist = require('../lib/urllist'),
     FileDist = require('../lib/FileDist'),
     async = require('async'),
-    prettyjson = require('prettyjson'),
     utils = require('../lib/utils');
 
 
-describe('FileDist', function () {
+describe.skip('FileDist', function () {
   describe('#create()', function () {
 
     var files = [

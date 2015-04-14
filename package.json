@@ -17,7 +17,12 @@
     "stylus",
     "browser-sync",
     "minifier",
-    "cdn"
+    "cdn",
+    "build",
+    "ractive",
+    "react",
+    "browserify",
+    "autoprefixer"
   ],
   "repository": {
     "type": "git",

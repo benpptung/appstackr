@@ -1,0 +1,39 @@
+<div class="alice-box-precompile">
+    <h3>Hello {{name}}!</h3>
+
+    <p>You have <b class="text-danger">{{unread}}</b> / {{total}} unread messages.</p>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width:{{percent_float}}%">
+            <span>{{percent_text}}% done</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="name">name</label>
+
+                    <div>
+                        <input type="text" class="form-control" id="name" placeholder="name" value="{{name}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="unread">unread</label>
+
+                    <div>
+                        <input type="text" class="form-control" id="unread" placeholder="unread" value="{{unread}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="total">total</label>
+
+                    <div>
+                        <input type="text" class="form-control" id="total" placeholder="total" value="{{total}}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

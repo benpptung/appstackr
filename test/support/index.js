@@ -4,28 +4,29 @@
  * Time: PM7:01
  */
 
-var path = require('path'),
-    async = require('async'),
-    glob = require('glob'),
-    mkdirp = require('mkdirp'),
-    fs = require('fs'),
-    cwd_profile = path.join(__dirname, '..', 'site'),
-    crypto = require('crypto');
+var fs = require('fs');
+var path = require('path');
+var crypto = require('crypto');
+
+var async = require('async');
+var glob = require('glob');
+var mkdirp = require('mkdirp');
+
+var cwd_site = path.join(__dirname, '..', 'site');
 
 // make profile to see process.cwd() in the test/site directory
-process.chdir(cwd_profile);
+process.chdir(cwd_site);
+var config = module.exports = require('../../lib/globals/config');
 
-var support = module.exports = require('../../lib/globals/config');
-
-var viewsReg = new RegExp(RegExp.quote(support.views) + "(.+)$"),
-    publicReg = new RegExp(RegExp.quote(support.public) + "(.+)$");
+var viewsReg = new RegExp(RegExp.quote(config.views) + "(.+)$"),
+    publicReg = new RegExp(RegExp.quote(config.public) + "(.+)$");
 
 /**
  *
  * @param content
  * @param callback
  */
-support.sha1 = function(content, callback){
+config.sha1 = function(content, callback){
   var hash, buffs = [], ended = false;
 
   hash = crypto.createHash('sha1');
@@ -47,20 +48,20 @@ support.sha1 = function(content, callback){
   hash.end(content);
 };
 
-support.moveDistFiles = function(callback){
+config.moveDistFiles = function(callback){
   var viewstask = {
-        findpath: path.join(support.views, '**', '*.*'),
+        findpath: path.join(config.views, '**', '*.*'),
         name : 'views'
       },
       publictask = {
-        findpath: path.join(support.public, '**', '*.*'),
+        findpath: path.join(config.public, '**', '*.*'),
         name: 'public'
       },
       worker = function(task, done){
         glob(task.findpath, function(err, files){
           async.each(files, function(file, next){
-            var dirpath = task.filename == 'views' ? support.distViews : support.distPublic,
-                reg = task.filename == 'views' ? viewsReg : publicReg,
+            var dirpath = task.name == 'views' ? config.distViews : config.distPublic,
+                reg = task.name == 'views' ? viewsReg : publicReg,
                 dest = path.join(dirpath, file.match(reg)[1]);
 
             mkdirp(path.dirname(dest), function(){

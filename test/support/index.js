@@ -12,21 +12,22 @@ var async = require('async');
 var glob = require('glob');
 var mkdirp = require('mkdirp');
 
+// mock cwd to site, then require config for testing
 var cwd_site = path.join(__dirname, '..', 'site');
-
-// make profile to see process.cwd() in the test/site directory
 process.chdir(cwd_site);
-var config = module.exports = require('../../lib/globals/config');
+var config = require('../../lib/globals/config');
 
-var viewsReg = new RegExp(RegExp.quote(config.views) + "(.+)$"),
-    publicReg = new RegExp(RegExp.quote(config.public) + "(.+)$");
+var viewsReg = new RegExp(RegExp.quote(config.views) + "(.+)$");
+var publicReg = new RegExp(RegExp.quote(config.public) + "(.+)$");
+
+exports.config = config;
 
 /**
  *
  * @param content
  * @param callback
  */
-config.sha1 = function(content, callback){
+exports.shasum = function(content, callback){
   var hash, buffs = [], ended = false;
 
   hash = crypto.createHash('sha1');
@@ -48,7 +49,11 @@ config.sha1 = function(content, callback){
   hash.end(content);
 };
 
-config.moveDistFiles = function(callback){
+exports.shasumSync = function (content) {
+  return crypto.createHash('sha1').update(content).digest('hex');
+};
+
+exports.moveDistFiles = function(callback){
   var viewstask = {
         findpath: path.join(config.views, '**', '*.*'),
         name : 'views'

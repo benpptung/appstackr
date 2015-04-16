@@ -4,7 +4,8 @@ var path = require('path'),
 
 var expect = require('expect.js');
 var childs = require('../lib/childs');
-var config = require('../lib/globals').config;
+var support = require('./support'),
+    config = support.config;
 
 describe('childs', function() {
 

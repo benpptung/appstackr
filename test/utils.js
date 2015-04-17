@@ -53,7 +53,6 @@ describe('utils', function () {
         },
         function (err, codes) {
           expect(err).to.not.be.ok();
-          fs.createWriteStream(join(__dirname, '..', 'trials', 'ractive.js')).end(codes);
           expect(shasum(codes)).to.be('88afd029486547a46ae3d2b1a705ace918d2174f');
           done();
         }
@@ -102,9 +101,38 @@ describe('utils', function () {
   });
 
   describe('cssByFile()', function () {
-    it('should transform less file to css');
-    it('should transform scss file to css');
-    it('should transform stylus file to css');
+    it('should transform less file to css', function(done) {
+      cssByFile(
+        join(__dirname, 'fixtures', 'files', 'less', 'start.less'),
+        function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('64d52870656064736b0a196179f95cda2dd4f128');
+          done();
+        }
+      )
+    });
+
+    it('should transform scss file to css', function (done) {
+      cssByFile(
+        join(__dirname, 'fixtures', 'files', 'scss', 'ui.scss'),
+        function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('bd8a11cfb3f400863a6de78e0244ca2b006e7700');
+          done();
+        }
+      )
+    });
+
+    it('should transform stylus file to css', function (done) {
+      cssByFile(
+        join(__dirname, 'fixtures', 'files', 'stylus', 'start.styl'),
+        function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('49efeea24d1c95b12800d53b976f65942ffeabe2');
+          done();
+        }
+      )
+    });
     it('will not change the css file');
   });
 

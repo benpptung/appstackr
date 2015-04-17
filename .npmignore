@@ -7,3 +7,4 @@ npm-debug.log
 test
 examples
 trials
+!test/site/node_modules

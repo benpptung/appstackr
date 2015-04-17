@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path'),
     join = path.join;
+var format = require('util').format;
 
 var expect = require('expect.js');
 var async = require('async');
@@ -27,13 +28,14 @@ describe('utils', function () {
         [join(__dirname, 'fixtures', 'files', 'ractive', 'index.js')],
         {
           browserify: {
-            externals: 'ractive'
+            externals: 'ractive',
+            exposes: 'index.js:alice'
           },
           autoprefixer: true
         },
         function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('3ad2fdec1a8af29bd92a3701c264dbf8ba6e82df');
+          expect(shasum(codes)).to.be('ea6b7bc7ac0f876d25ea5431d7b6b106c0e15262');
           done();
         }
       )
@@ -45,29 +47,58 @@ describe('utils', function () {
         ['ractive'],
         {
           browserify: {
-            exposes: 'ractive'
+            exposes: 'ractive',
+            noParse: ['ractive']
           }
         },
         function (err, codes) {
           expect(err).to.not.be.ok();
           fs.createWriteStream(join(__dirname, '..', 'trials', 'ractive.js')).end(codes);
-          expect(shasum(codes)).to.be('...');
+          expect(shasum(codes)).to.be('88afd029486547a46ae3d2b1a705ace918d2174f');
           done();
         }
       );
-
-
     });
 
-    it.skip('should bundle specific file or sub module from node_modules folders by module resolution semantics', function (done) {
+    it('should bundle specific file or sub module from node_modules folders by module resolution semantics', function (done) {
 
+      var old = utils.warn;
+      utils.warn = function (message) {
+        expect(message).to.match(/^exposes:/);
+      };
+      browserify(
+        ['ractive/ractive-legacy.runtime.min'],
+        {
+          browserify: {
+            exposes: 'ractive',
+            noParse: ['ractive/ractive-legacy.runtime.min.js']
+          }
+        },
+        function (err, codes) {
+          utils.warn = old;
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('7a17862af07b6757cb542c9c03781eeb3ef3a8b2');
+          done();
+        }
+      );
     });
 
-    it('should expose local file as module');
   });
 
   describe('concat()', function () {
-    it('should concat js and jsx files all together');
+    it('should concat js and jsx files all together', function (done) {
+      concat(
+        [
+          join(__dirname, 'fixtures', 'files', 'js', 'plainjs-foo.js'),
+          join(__dirname, 'fixtures', 'files', 'jsx', 'react-todos.jsx')
+        ],
+        function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('fc3298751633afc293ca81dd9a6e90afb5f57381');
+          done();
+        }
+      );
+    });
   });
 
   describe('cssByFile()', function () {

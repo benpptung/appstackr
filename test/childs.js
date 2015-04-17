@@ -3,9 +3,11 @@ var path = require('path'),
     join = path.join;
 
 var expect = require('expect.js');
-var childs = require('../lib/childs');
+
 var support = require('./support'),
     config = support.config;
+var childs = require('../lib/childs');
+
 
 describe('childs', function() {
 

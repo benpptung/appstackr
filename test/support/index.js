@@ -15,7 +15,7 @@ var mkdirp = require('mkdirp');
 // mock cwd to site, then require config for testing
 var cwd_site = path.join(__dirname, '..', 'site');
 process.chdir(cwd_site);
-var config = require('../../lib/globals/config');
+var config = require('../../lib/globals').config;
 
 var viewsReg = new RegExp(RegExp.quote(config.views) + "(.+)$");
 var publicReg = new RegExp(RegExp.quote(config.public) + "(.+)$");

@@ -22,7 +22,7 @@ var utils = require('../lib/utils'),
 describe('utils', function () {
 
 
-  describe('browserify()', function () {
+  describe('#browserify()', function () {
     it('should transform ractive template and styles file', function (done) {
       browserify(
         [join(__dirname, 'fixtures', 'files', 'ractive', 'index.js')],
@@ -84,7 +84,7 @@ describe('utils', function () {
 
   });
 
-  describe('concat()', function () {
+  describe('#concat()', function () {
     it('should concat js and jsx files all together', function (done) {
       concat(
         [
@@ -100,7 +100,7 @@ describe('utils', function () {
     });
   });
 
-  describe('cssByFile()', function () {
+  describe('#cssByFile()', function () {
     it('should transform less file to css', function(done) {
       cssByFile(
         join(__dirname, 'fixtures', 'files', 'less', 'start.less'),
@@ -133,22 +133,84 @@ describe('utils', function () {
         }
       )
     });
-    it('will not change the css file');
+    it('will not change the css file', function (done) {
+      cssByFile(
+        join(__dirname, 'fixtures', 'files', 'css', 'cover.css'),
+        function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('fd2296e62fe7b044c1c821a54e47feae71698f4d');
+          done();
+        }
+      )
+    });
   });
 
-  describe('autoprefixer()', function () {
-    it('should transform css with vendor prefix');
+  describe('#autoprefixer()', function () {
+    it('should transform css with vendor prefix', function (done) {
+      cssByFile(join(__dirname, 'fixtures', 'files', 'ractive', 'ui.scss'), function(err, codes) {
+        autoprefixer(codes, true, function(err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('73740997afe1c7021d60cb79286700031790b675');
+          done();
+        })
+      })
+    });
   });
 
-  describe('uglify()', function () {
-    it('should minify js file');
+  describe('#uglify()', function () {
+    it('should minify js file', function(done) {
+      fs.readFile(join(__dirname, 'fixtures', 'files', 'js', 'ractive-legacy.js'), function (err, codes) {
+        uglify(codes, function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('033e64a515895f7c43736ccf300ec01d70e490ca');
+          done();
+        });
+      })
+    });
   });
 
 
-  describe('htmlcompressor()', function () {
-    it('should minify .html file');
-    it('should minify .swig file');
-    it('should minify .ract file');
+  describe('#htmlcompressor()', function () {
+
+    var old;
+
+    beforeEach(function () {
+      old = config.viewJsMini;
+      config.viewJsMini = true;
+    });
+
+    afterEach(function () {
+      config.viewJsMini = old;
+    });
+
+    it('should minify .html file', function(done) {
+      fs.readFile(join(__dirname, 'fixtures', 'files', 'tmpl', 'base.html'), function (err, codes) {
+        htmlcompressor(codes, function(err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('fa7d3b41ec89b13dfa6bd5c153e92c439173b440');
+          done();
+        })
+      })
+    });
+
+    it('should minify .swig file', function (done) {
+      fs.readFile(join(__dirname, 'fixtures', 'files', 'tmpl', 'index.swig'), function (err, codes) {
+        htmlcompressor(codes, function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('0bb4fd8feff827b725bc161667017a56248007c7');
+          done();
+        })
+      });
+    });
+    it('should minify .ract file', function (done) {
+      fs.readFile(join(__dirname, 'fixtures', 'files', 'tmpl', 'ui.ract'), function (err, codes) {
+        htmlcompressor(codes, function (err, codes) {
+          expect(err).to.not.be.ok();
+          expect(shasum(codes)).to.be('53c6bf59009c8858bd662889b51372deb8d46a13');
+          done();
+        })
+      })
+    });
   });
 
 });

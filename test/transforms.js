@@ -10,6 +10,8 @@ var browserify = require('browserify');
 var through = require('through');
 var colors = require('colors');
 
+/// testenv should always be the first local imported module to set up test env
+var testenv = require('./testenv');
 var transforms = require('../lib/transforms');
 var ractive = require('../lib/transforms/ractive');
 var text = require('../lib/transforms/text');

@@ -4,8 +4,9 @@ var path = require('path'),
 
 var expect = require('expect.js');
 
-var support = require('./support'),
-    config = support.config;
+/// testenv should always be the first local imported module to set up test env
+var testenv = require('./testenv'),
+    config = testenv.config;
 var childs = require('../lib/childs');
 
 

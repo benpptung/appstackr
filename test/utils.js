@@ -8,9 +8,10 @@ var format = require('util').format;
 var expect = require('expect.js');
 var async = require('async');
 
-var support = require('./support'),
-    config = support.config,
-    shasum = support.shasumSync;
+/// testenv should always be the first local imported module to set up test env
+var testenv = require('./testenv'),
+    config = testenv.config,
+    shasum = testenv.shasumSync;
 var utils = require('../lib/utils'),
     browserify = utils.browserify,
     concat = utils.concat,

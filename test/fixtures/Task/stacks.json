@@ -1,50 +1,48 @@
 {
   "stack1": {
-    "filename": "todos",
+    "name": "todos",
     "nature": "js",
-    "files": [
-      "client/todo/VAppView.js"
-    ],
-    "commonjs": "webmake"
+    "files": ["client/todo/**/*.*"],
+    "commonjs": true
   },
   "stack2": {
-    "filename": "todos",
+    "name": "todos",
     "nature": "css",
     "files": [
       "less/app-todo/todos.css"
-    ]
+    ],
+    "autoprefixer": false
   },
   "stack3": {
-    "filename": "alert",
+    "name": "alert",
     "nature": "jhtml",
     "files": [
       "client/alert/transition.js",
       "client/alert/alert.js"
-    ]
+    ],
+    "browserify" : {}
   },
   "stack4": {
-    "filename": "bs",
+    "name": "bs",
     "nature": "js",
-    "files": [
-      "client/bs/**"
-    ]
+    "files": "client/bs/**"
   },
   "stack5": {
-    "filename": "bootstrap",
+    "name": "bootstrap",
     "nature": "css",
     "files": [
       "less/bootstrap/bootstrap.less"
     ]
   },
   "stack6": {
-    "filename": "bootstrap-theme",
+    "name": "bootstrap-theme",
     "nature": "css",
     "files": [
       "less/theme/theme.less"
     ]
   },
   "stack7": {
-    "filename": "invalid-commonjs",
+    "name": "invalid-commonjs",
     "nature": "js",
     "files": [
         "client/alert/transition.js",
@@ -53,16 +51,39 @@
     "commonjs": "browserify"
   },
   "stack8": {
-    "filename": "impossible-stack",
+    "name": "impossible-stack",
     "nature": "css",
-    "files": [
-      "less/**"
-    ],
-    "commonjs": "webmake"
+    "files": "less/**",
+    "commonjs": "*"
+  },
+
+  "stack9": {
+    "name": "impossible-stack",
+    "nature": "css",
+    "files": "less/**",
+    "browserify": {
+      "noParse": "ractive",
+      "exposes": "ractive"
+    }
+  },
+
+  "view-concat": {
+    "name": "common",
+    "nature": "html",
+    "files": "client/tmpl/*.*",
+    "ext": "html"
+  },
+
+  "view-non-concat": {
+    "name": "common",
+    "nature": "html",
+    "files": "client/tmpl/*.*",
+    "ext": "html",
+    "concat": false
   },
 
   "stack-no-prefixer": {
-    "filename": "no-autoprefixer",
+    "name": "no-autoprefixer",
     "nature": "css",
     "files": [
       "less/theme/theme.less",
@@ -71,7 +92,7 @@
   },
 
   "stack-autoprefixer": {
-    "filename": "with-autoprefixer",
+    "name": "with-autoprefixer",
     "nature": "css",
     "files": [
       "less/theme/theme.less",

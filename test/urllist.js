@@ -10,9 +10,10 @@ var fs = require('fs');
 var expect = require('expect.js');
 var async = require('async');
 
-var support = require('./support'),
-    shasum = support.shasum,
-    config = support.config;
+/// testenv should always be the first local imported module to set up test env
+var testenv = require('./testenv'),
+    shasum = testenv.shasum,
+    config = testenv.config;
 var utils = require('../lib/utils');
 var urllist = require('../lib/urllist');
 

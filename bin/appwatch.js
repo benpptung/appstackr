@@ -75,11 +75,11 @@ if (config.bsync.proxy) {
 
         client.destroy();
         retry--;
-        utils.message('connect proxy server failed. retry again. %s times remains.'.green, retry);
+        utils.message('connect proxy server failed. retry again. %s retries remains.'.green, retry);
         if (retry > 0) {
           return setTimeout(req, 500);
         }
-        utils.warn('%s connect %s. after %s retries', error.toString().red, proxy_href.join(':').red, (retry + '').red);
+        utils.warn('%s connect %s. after %s retries', error.toString().red, proxy_href.join(':').red, (total + '').red);
       })
   }
 

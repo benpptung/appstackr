@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var commander = require('commander'),
-    appstack = require('../index'),
-    meta = require('../package.json');
+var commander = require('commander');
 
+var appstack = require('../index');
+var meta = require('../package.json');
 var options;
 
 commander

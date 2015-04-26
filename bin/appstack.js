@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-var commander = require('commander'),
-    appstack = require('../index'),
-    meta = require('../package.json');
+var inspect = require('util').inspect;
+
+var commander = require('commander');
+var debug = require('debug')('appstackr:bin/appstack');
+
+var appstack = require('../index');
+var meta = require('../package.json');
 
 var options = {};
 
@@ -14,6 +18,8 @@ commander
 .option('-f, --filter [filter]', 'nature or name of the stack to stack or all if not specified', '')
 .description('stacking the appstack.json')
 .parse(process.argv);
+
+debug('commander.filter: %s', inspect(commander.filter, {colors: true}));
 
 if (commander.hasOwnProperty('beautify')) options.beautify = true;
 if (commander.hasOwnProperty('quiet')) options.warning = false;

@@ -16,6 +16,10 @@ var transforms = require('../lib/transforms');
 var ractive = require('../lib/transforms/ractive');
 var text = require('../lib/transforms/text');
 
+
+
+
+
 describe('transforms', function() {
 
   describe('text.js', function () {
@@ -27,6 +31,7 @@ describe('transforms', function() {
         if (basename(file) != 'double-quote-str.swig') return through();
         return text({});
       });
+
       b.bundle(done);
 
     });

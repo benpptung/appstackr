@@ -6,7 +6,7 @@ var util = require('util'),
 var net = require('net');
 
 var program = require('commander');
-var browserSync = require('browser-sync');
+var bs = require('browser-sync').create();
 var colors = require('colors');
 var async = require('async');
 
@@ -96,6 +96,9 @@ function start() {
     .on('reloaded', function(tasks) {
       utils.message('stacks.js'.magenta + ' reloaded. new stacks added: ' + '%d'.green, tasks.length);
     })
+    .on('changed', function(task) {
+      bs.reload(task._dest);
+    })
     .load(stackfile);
 }
 
@@ -114,7 +117,7 @@ function error(error) {
 }
 
 function init_browser_sync(options) {
-  browserSync(options.bsync);
+  bs.init(options.bsync);
 }
 
 function run_stacking(stacklist, options, callback) {

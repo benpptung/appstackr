@@ -163,7 +163,7 @@ describe('utils', function () {
       fs.readFile(join(__dirname, 'fixtures', 'files', 'js', 'ractive-legacy.js'), function (err, codes) {
         uglify(codes, function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('033e64a515895f7c43736ccf300ec01d70e490ca');
+          expect(shasum(codes)).to.be('4057d594b742043c653747a8d444e7697cf27c60');
           done();
         });
       })

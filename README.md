@@ -1,14 +1,9 @@
 appstackr
 =========
 
-A personal tool to help me maintaining my projects. Hope it helpful to you too. It bundles:
-
-    1. js|jsx files via browserify or not.
-    2. css|scss|less|stylus with auto-prefixer or not
+A personal tool to strategically stack up front-end bundles including js, jsx, css, scss, less, stylus, html style template files. Using browserify, browser-sync, uglifyjs, auto-prefixer..etc.
     
-It supports URL refactor in html/css for CDN production deployment.
-
-    For example, todos.min.js will be renamed as todos.min-jadqu0.js with its version hash added and the url in views files are refactored too.
+Add hashes for the stacked bundles to make the browser to long-term cache js, image and css files. Speed up website in production environment.
      
 
 Installation
@@ -21,23 +16,29 @@ $ npm install appstackr --save-dev
 Edit package.json script property as following if express project
 ```
 "scripts": {
-    "start"   : "node ./bin/www",
-    "appstack": "appstack",
-    "appbuild": "appbuild",
-    "appwatch": "appwatch -i --server 0.0.0.0:3000",
+    "start"   : "NODE_ENV=production node ./bin/www",
     "devel"   : "DEBUG={app_name}:* node ./bin/www",
+    "appbuild": "appbuild",
+    "appstack": "appstack",
+    "appwatch": "appwatch --server 0.0.0.0:3000",
     "bsync"   : "npm run devel & npm run appwatch"
      }
 ```
 
-Run command - Enjoy Multiple Screens Live Reload & app building at the same time.
+Run command
 ```
 $ npm run bsync
 ```
 
-It will start the server in DEBUG mode listening on port 3000. Then, start files watch on the files described in `stacks.js`, including `stacks.js` itself. Then, start `browser-sync` and proxy to `0.0.0.0:3000`
+It will start the server in DEBUG mode listening on port 3000. Then, start files watch on the files described in `stacks.js`, including `stacks.js` itself. At the same time, start `browser-sync` and proxy to `0.0.0.0:3000`
 
-##### Example: https://github.com/benpptung/generator
+##### Example: https://github.com/benpptung/appstackr-examples
+
+
+
+
+Try to generate an express project with appstackr installed
+=================================================
 
 Make sure express-generator is not installed, or remove it temporally
 

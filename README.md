@@ -1,19 +1,19 @@
 appstackr
 =========
 
-A personal tool to strategically stack up front-end bundles including js, jsx, css, scss, less, stylus, html style template files. Using browserify, browser-sync, uglifyjs, auto-prefixer..etc.
+A personal tool to strategically stack up front-end bundles from js, jsx, css, scss, less, stylus, html-styled template files( swig, ractive, mustache ), or pure html files. Using browserify, browser-sync, uglifyjs, auto-prefixer, htmlcompressor..etc.
     
-Add hashes for the stacked bundles to make the browser to long-term cache js, image and css files. Speed up website in production environment.
+Add hashes to the stacked bundles. So the browser can long-term cache js, image and css files. Speed up website in production environment.
      
 
 Installation
 ============================
-Install to the project as local dependency
+Install to the project as local dependency ( You should NEVER install building tool in global, or if the building tool is updated, it might break your old projects )
 ```
 $ npm install appstackr --save-dev
 ```
 
-Edit package.json script property as following if express project
+Edit package.json script property as following( use express as example )
 ```
 "scripts": {
     "start"   : "NODE_ENV=production node ./bin/www",
@@ -25,19 +25,50 @@ Edit package.json script property as following if express project
      }
 ```
 
+Add a `stacks.js` file like following
+```
+module.exports = [
+  {
+    name: 'base/site',
+    nature: 'js',
+    files: 'path/to/client/**/*.js'
+  },
+  {
+    name: 'base/site',
+    nature: 'css',
+    files: [
+      'path/to/client/**/*.css',
+      'path/to/client/**/*.scss',
+      'path/to/client/**/*.less',
+      'path/to/client/**/*.styl'
+    ]
+  }
+];
+```
+
+Stack up front-end bundles `/js/base/site.min.js` and `/css/base/site.min.css`
+
+```
+$ npm run appstack
+```
+
+
 Run command
 ```
 $ npm run bsync
 ```
 
-It will start the server in DEBUG mode listening on port 3000. Then, start files watch on the files described in `stacks.js`, including `stacks.js` itself. At the same time, start `browser-sync` and proxy to `0.0.0.0:3000`
-
-##### Example: https://github.com/benpptung/appstackr-examples
+Find the view files, edit the `src` and `href` pointed to `/js/base/site.min.js` and `/css/base/site.min.css`
 
 
+##### Example: 
+
+https://github.com/benpptung/appstackr-examples
 
 
-Try to generate an express project with appstackr installed
+
+
+Generate an express project with appstackr installed
 =================================================
 
 Make sure express-generator is not installed, or remove it temporally
@@ -57,20 +88,25 @@ Install dependencies:
 $ npm install
 ```
 
-Rock and Roll
+Stack up front-end bundles:
+```
+$ npm run appstack
+```
+
+Start server & appwatch together
 ```
 $ npm run bsync
 ```
 
 
 
-###### No initial stacking
+##### Stack up bundles while starting appwatch
 
 ```
-"appwatch": "appwatch --server 0.0.0.0:3000"
+"appwatch": "appwatch -i --server 0.0.0.0:3000"
 ```
 
-###### No server
+##### Use browser-sync server ( No your own routes & views )
 
 appstackr will direct `browser-sync` to watch `public` folder, which is defined in global config, or `appstackr-settings.json`
 ```
@@ -90,7 +126,7 @@ Usage
       {
         name: 'site',
         nature: 'js',
-        files: 'client/site/style.scss'
+        files: 'client/site/**/*.js'
       },
       {
       ...
@@ -150,7 +186,7 @@ module.exports = [
   },
 ]
 ```
-If see `EMFILE` appstackr error, it means there are too many files opened. It might happen to require `react` module. One of the workarounds is to stack its minified file directly, e.g. `node_modules/react/dist/react-with-addons.min.js` Also, facebook has tried their best to minify their js files, we shall not minify the files again.
+If you see `EMFILE` appstackr error, it means too many files opened. It might happen to require `react` module. One of the workarounds is to stack its minified file directly, e.g. `node_modules/react/dist/react-with-addons.min.js` It is suggested because facebook has tried their best to minify their js files, we shall not minify the files again.
 
 
 ###### browserify tranforms support
@@ -196,13 +232,20 @@ module.exports = [
 
 ### Default directory structure
 ```
-|-- public
+|-- public ( hold the js/css/image files )
 |
-|-- views
-|   |
-|   \-- components
+|-- views ( hold the view files for server routes )      
 |
-|-- dist
-|-- stacks.js
-\-- appstackr-settings.json
+|-- stacks.js ( how to stack up front-end bundles )
+|
+\-- appstackr-settings.json ( configure appstackr, e.g. define your own public js folder name )
+```
+
+
+### Debug
+
+appstackr has no source map. To figure out what's wrong, use the following command to beautify the codes and see where the error is in browser console. If not sure which source file it is, use `stacks.js` as an index. e.g. to check `example.min.js` 
+
+```
+$ npm run appstack -- -bf example:js
 ```

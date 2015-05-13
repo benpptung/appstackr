@@ -1,5 +1,5 @@
 --growl
 --reporter spec
 --check-leaks
---timeout 5000
+--timeout 8000
 --globals replacements

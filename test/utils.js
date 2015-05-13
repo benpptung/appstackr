@@ -163,7 +163,10 @@ describe('utils', function () {
       fs.readFile(join(__dirname, 'fixtures', 'files', 'js', 'ractive-legacy.js'), function (err, codes) {
         uglify(codes, function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('4057d594b742043c653747a8d444e7697cf27c60');
+          expect(shasum(codes)).to.be('a0605a32a840dea85f64b8108115301626752cbe');
+          // uglify-js@2.4.16 0e35b7047fc4a39b38e3aca80c7f07d5965ffbe6
+          // uglify-js@2.4.20 4057d594b742043c653747a8d444e7697cf27c60
+          // uglify-js@2.4.21 a0605a32a840dea85f64b8108115301626752cbe
           done();
         });
       })

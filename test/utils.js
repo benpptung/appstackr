@@ -163,7 +163,6 @@ describe('utils', function () {
             expect(err).to.not.be.ok();
             // autoprefixer 5.1.x: 73740997afe1c7021d60cb79286700031790b675
             // postcss@4.2.11 + autoprefixer-core@5.2.0 c8b35f6e5dc32e183db115892fa7144dd029c211
-            fs.createWriteStream(join(__dirname, '..', 'trial', 'ui-autoprefixer.css')).end(codes);
             expect(shasum(codes)).to.be('ad82b4716de4a5280685dfae2e04614e27d6cab0');
 
             done();

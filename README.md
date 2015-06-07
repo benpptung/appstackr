@@ -1,14 +1,14 @@
 appstackr
 =========
 
-A personal tool to strategically stack up front-end bundles from js, jsx, css, scss, less, stylus, html-styled template files( swig, ractive, mustache ), or pure html files. Using browserify, browser-sync, uglifyjs, auto-prefixer, htmlcompressor..etc.
+A personal opinioned tool to strategically stack up front-end bundles from js, jsx, css, scss, less, stylus, html-styled template files( swig, ractive, mustache ), or pure html files. Using browserify, browser-sync, uglifyjs, auto-prefixer, htmlcompressor..etc.
     
 Add hashes to the stacked bundles. So the browser can long-term cache js, image and css files. Speed up website in production environment.
      
 
 Installation
 ============================
-Install to the project as local dependency ( You should NEVER install building tool in global, or if the building tool is updated, it might break your old projects )
+Install to the project as local dependency
 ```
 $ npm install appstackr --save-dev
 ```
@@ -249,3 +249,17 @@ appstackr has no source map. To figure out what's wrong, use the following comma
 ```
 $ npm run appstack -- -bf example:js
 ```
+
+
+### Benefits
+
+1. `appstackr is designed as a local dependency in a project.` That said, if you upgrade your global build tool,
+   it's very possible your next building results of `js|css` files will be changed. Thereafter, in your `CDN`, these static files will
+   have different `version hash tags`, then your customers are forced to reload the new static files, just because you upgrade your build tool.
+
+2. appstackr is not designed to be a public project or replace other tools. It's just a personal opinioned tool in my produciton environment,
+   `continuely improvement is for sure`.
+
+3. appstackr is an inspiration after couple years using `ANT` to maintain my websites. It had been a nightmare, and I don't want it
+   to happen again. One of the most important priority in appstackr is `less is more`, including no more verbose syntax in building script,
+   easy to tell where are the source files, and where are the destination files.

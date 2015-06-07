@@ -35,9 +35,13 @@ describe('utils', function () {
           autoprefixer: true
         },
         function (err, codes) {
-          expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('ea6b7bc7ac0f876d25ea5431d7b6b106c0e15262');
-          done();
+
+          try {
+            expect(err).to.not.be.ok();
+            expect(shasum(codes)).to.be('89cfe92668352998551e443dcbf289b40aab2d36');
+            done();
+          }
+          catch (err) { done(err)}
         }
       )
     });
@@ -54,7 +58,9 @@ describe('utils', function () {
         },
         function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('88afd029486547a46ae3d2b1a705ace918d2174f');
+          // browserify 10.1.3 - 88afd029486547a46ae3d2b1a705ace918d2174f
+          // browserify 10.2.4 - cfd6738c99bdf9401a5f335a9673ac63f95d6001
+          expect(shasum(codes)).to.be('cfd6738c99bdf9401a5f335a9673ac63f95d6001');
           done();
         }
       );
@@ -77,7 +83,9 @@ describe('utils', function () {
         function (err, codes) {
           utils.warn = old;
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('7a17862af07b6757cb542c9c03781eeb3ef3a8b2');
+          // browserify 10.1.3 - 7a17862af07b6757cb542c9c03781eeb3ef3a8b2
+          // browserify 10.2.4 - f1859dded996276a639fe8be4e9a4e9ef9f9710b
+          expect(shasum(codes)).to.be('f1859dded996276a639fe8be4e9a4e9ef9f9710b');
           done();
         }
       );
@@ -150,11 +158,21 @@ describe('utils', function () {
     it('should transform css with vendor prefix', function (done) {
       cssByFile(join(__dirname, 'fixtures', 'files', 'ractive', 'ui.scss'), function(err, codes) {
         autoprefixer(codes, true, function(err, codes) {
-          expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('73740997afe1c7021d60cb79286700031790b675');
-          done();
+
+          try {
+            expect(err).to.not.be.ok();
+            // autoprefixer 5.1.x: 73740997afe1c7021d60cb79286700031790b675
+            // postcss@4.2.11 + autoprefixer-core@5.2.0 c8b35f6e5dc32e183db115892fa7144dd029c211
+            fs.createWriteStream(join(__dirname, '..', 'trial', 'ui-autoprefixer.css')).end(codes);
+            expect(shasum(codes)).to.be('ad82b4716de4a5280685dfae2e04614e27d6cab0');
+
+            done();
+          }
+          catch (err) {
+            done(err);
+          }
         })
-      })
+      });
     });
   });
 
@@ -163,10 +181,11 @@ describe('utils', function () {
       fs.readFile(join(__dirname, 'fixtures', 'files', 'js', 'ractive-legacy.js'), function (err, codes) {
         uglify(codes, function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('a0605a32a840dea85f64b8108115301626752cbe');
+          expect(shasum(codes)).to.be('10c25a29aef410d883b03f9b0a13cde7b0a13d02');
           // uglify-js@2.4.16 0e35b7047fc4a39b38e3aca80c7f07d5965ffbe6
           // uglify-js@2.4.20 4057d594b742043c653747a8d444e7697cf27c60
           // uglify-js@2.4.21 a0605a32a840dea85f64b8108115301626752cbe
+          // uglify-js@2.4.23 10c25a29aef410d883b03f9b0a13cde7b0a13d02
           done();
         });
       })

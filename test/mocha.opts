@@ -2,4 +2,3 @@
 --reporter spec
 --check-leaks
 --timeout 8000
---globals replacements

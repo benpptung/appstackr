@@ -1,6 +1,6 @@
 {
   "name": "appstackr",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Enjoy Multiple Screens Live Reload and app building at the same time",
   "bin": {
     "appstack": "./bin/appstack.js",
@@ -41,7 +41,7 @@
     "autoprefixer-core": "^5.2.0",
     "base-converter": "~1.1.2",
     "browser-sync": "^2.7.6",
-    "browserify": "^10.2.4",
+    "browserify": "10.1.0",
     "buffer-crc32": "~0.2.1",
     "clean-css": "^3.3.1",
     "colors": "^1.0.3",

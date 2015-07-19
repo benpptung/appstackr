@@ -58,9 +58,10 @@ describe('utils', function () {
         },
         function (err, codes) {
           expect(err).to.not.be.ok();
+          // browserify 10.1.0 - 88afd029486547a46ae3d2b1a705ace918d2174f
           // browserify 10.1.3 - 88afd029486547a46ae3d2b1a705ace918d2174f
           // browserify 10.2.4 - cfd6738c99bdf9401a5f335a9673ac63f95d6001
-          expect(shasum(codes)).to.be('cfd6738c99bdf9401a5f335a9673ac63f95d6001');
+          expect(shasum(codes)).to.be('88afd029486547a46ae3d2b1a705ace918d2174f');
           done();
         }
       );
@@ -83,9 +84,10 @@ describe('utils', function () {
         function (err, codes) {
           utils.warn = old;
           expect(err).to.not.be.ok();
+          // browserify 10.1.0 - 7a17862af07b6757cb542c9c03781eeb3ef3a8b2
           // browserify 10.1.3 - 7a17862af07b6757cb542c9c03781eeb3ef3a8b2
           // browserify 10.2.4 - f1859dded996276a639fe8be4e9a4e9ef9f9710b
-          expect(shasum(codes)).to.be('f1859dded996276a639fe8be4e9a4e9ef9f9710b');
+          expect(shasum(codes)).to.be('7a17862af07b6757cb542c9c03781eeb3ef3a8b2');
           done();
         }
       );

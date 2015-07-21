@@ -15,7 +15,7 @@ describe('dirprop()', function(){
     var jsDirProp = dirprop('js');
 
     expect(jsDirProp.addhash).to.be(true);
-    expect(jsDirProp.refactor).to.be(false);
+    expect(jsDirProp.refactor).to.be(true);
     expect(jsDirProp.htmlmini).to.be(false);
     expect(jsDirProp.distDirPath).to.be.eql(config.distPublic);
   });

@@ -16,12 +16,11 @@ $ npm install appstackr --save-dev
 Edit package.json script property as following( use express as example )
 ```
 "scripts": {
-    "start"   : "NODE_ENV=production node ./bin/www",
-    "devel"   : "DEBUG={app_name}:* node ./bin/www",
+    "start"   : "DEBUG=<app_name>:* node ./bin/www",
     "appbuild": "appbuild",
     "appstack": "appstack",
     "appwatch": "appwatch --server 0.0.0.0:3000",
-    "bsync"   : "npm run devel & npm run appwatch"
+    "bsync"   : "npm start & npm run appwatch"
      }
 ```
 
@@ -148,71 +147,61 @@ Usage
 ```
 module.exports = [
   {
+    name: 'base/bundle',
+    nature: 'js',
+    files: 'superagent, insert-css',
+    browserify:{
+      exposes: '*' // Make all modules outside the bundle with require().
+    }
+  },
+  {
     name: 'base/site',
     nature: 'js',
     files: [
-      'superagent',                                 // bundle the superagent node module
-      'client/site/env.js',                         // bundle a local js file
-      'node_modules/ractive/ractive-legacy.min.js', // bundle a node module file using relative path
-      'react/addons'                                // bundle the react.js addons module
+      'client/helper.js'
+      'node_modules/public-browserify/react.js'
     ],
     browserify: {
-      exposes: 'superagent, ractive-legacy.min.js:ractive, react'
-        // expose superagent, ractive-legacy.min.js as ractive, react/addons
+      exposes: [
+      'helper.js:helper',
+      'react.js:react'
+      ]
+      // Make private module outside the bundle using <file_name>:<module_name> pattern
     }
   },
   {
-    name: 'base/helper',
+    name: 'base/shim',
     nature: 'js',
     files: [
-      'client/helper/**/*.js'
-    ],
-    browserify: {
-      externals: 'superagent',
-        // browserify.external('superagent');
-      exposes: 'loader.js:loader' 
-        // filename loader.js found in client/helper/**/*.js will be 
-        // expose as loader
-    }
-  },
-  {
-    name: 'base/iefix',
-    nature: 'js',
-    files: [
+      'node_modules/es5-shim/es5-shim.min.js',
+      'node_modules/es5-shim/es5-sham.min.js',
+      'node_modules/console-polyfill/index.js',
       'node_modules/html5shiv/dist/html5shiv.min.js',
       'node_modules/respond.js/dest/respond.matchmedia.addListener.min.js'
     ]
-    // if no commonjs or browserify option, concat the js files directly
+    // concat plain js files
   },
 ]
 ```
-If you see `EMFILE` appstackr error, it means too many files opened. It might happen to require `react` module. One of the workarounds is to stack its minified file directly, e.g. `node_modules/react/dist/react-with-addons.min.js` It is suggested because facebook has tried their best to minify their js files, we shall not minify the files again.
 
 
 ###### browserify tranforms support
 
-To require a `ractive` template and style rules
+Require `scss|less|styl|css` file directly in `js` or `jsx`
 ```
-var Ractive = require('ractive');
-var component = Ractive.extend({
-  el: '#alice-box',
-  template: require('./ui.ract'),
-  data: {
-    name: 'Ben',
-    unread: 6,
-    total: 10
-  },
-  css: require('./ui.scss') // or css|less|stylus
-});
+var React = require('react');
+var insCSS = require('insert-css');
 
-component();
+insCSS(require('./assets/style.scss'));
+
+module.exports = React.createClass(...);
 
 ```
 
 ###### react.js support
 
-1. Put `.jsx` file in `files` array of a stack.
-2. `require()` the `.jsx` file.
+1. Put `.jsx` file in a stack.
+2. or require `.jsx` file in the codes.
 
 
 ###### auto-prefixer support
@@ -240,6 +229,13 @@ module.exports = [
 |
 \-- appstackr-settings.json ( configure appstackr, e.g. define your own public js folder name )
 ```
+
+### appbuild
+
+```
+$ npm run appbuild
+```
+Create `dist` folder, auto-refactor the views, public assests. Upload public assets to `cdn` server, and point `views` folder to `dist/views` in `production` environment.
 
 
 ### Debug

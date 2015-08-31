@@ -128,7 +128,7 @@ describe('utils', function () {
         join(__dirname, 'fixtures', 'files', 'scss', 'ui.scss'),
         function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('bd8a11cfb3f400863a6de78e0244ca2b006e7700');
+          expect(shasum(codes)).to.be('89117d8aa289a55d225ba6da38422444b3f05e8c');
           done();
         }
       )
@@ -165,7 +165,7 @@ describe('utils', function () {
             expect(err).to.not.be.ok();
             // autoprefixer 5.1.x: 73740997afe1c7021d60cb79286700031790b675
             // postcss@4.2.11 + autoprefixer-core@5.2.0 c8b35f6e5dc32e183db115892fa7144dd029c211
-            expect(shasum(codes)).to.be('ad82b4716de4a5280685dfae2e04614e27d6cab0');
+            expect(shasum(codes)).to.be('2a939d24bdf05159aaefbc4817397a9b034f7671');
 
             done();
           }

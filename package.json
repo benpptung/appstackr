@@ -39,6 +39,8 @@
   "dependencies": {
     "async": "^0.9.0",
     "autoprefixer-core": "^5.2.0",
+    "babel-core": "^5.8.25",
+    "babelify": "^6.3.0",
     "base-converter": "~1.1.2",
     "browser-sync": "^2.7.6",
     "browserify": "10.1.0",
@@ -56,7 +58,6 @@
     "node.extend": "~1.0.9",
     "postcss": "^4.1.11",
     "ractive": "^0.7.3",
-    "react-tools": "^0.13.3",
     "rimraf": "~2.2.6",
     "stylus": "^0.51.1",
     "through": "^2.3.6",

@@ -100,11 +100,13 @@ describe('utils', function () {
       concat(
         [
           join(__dirname, 'fixtures', 'files', 'js', 'plainjs-foo.js'),
-          join(__dirname, 'fixtures', 'files', 'jsx', 'react-todos.jsx')
+          join(__dirname, 'fixtures', 'files', 'jsx', 'react-todos.jsx'),
+          join(__dirname, 'fixtures', 'files', 'babel',  'es6-let.es6'),
+          join(__dirname, 'fixtures', 'files', 'babel', 'es6-spread-attributes.es')
         ],
         function (err, codes) {
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('fc3298751633afc293ca81dd9a6e90afb5f57381');
+          expect(shasum(codes)).to.be('9646b13ab8b441b90e2e8a4e12c96ef467eba302');
           done();
         }
       );

@@ -1,6 +1,6 @@
 {
   "name": "appstackr",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "Enjoy Multiple Screens Live Reload and app building at the same time",
   "bin": {
     "appstack": "./bin/appstack.js",

@@ -1,4 +1,4 @@
 --growl
 --reporter spec
 --check-leaks
---timeout 8000
+--timeout 60000

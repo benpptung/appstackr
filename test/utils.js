@@ -19,6 +19,7 @@ var utils = require('../lib/utils'),
     autoprefixer = utils.autoprefixer,
     uglify = utils.uglify,
     htmlcompressor = utils.htmlcompressor;
+var Aflow = require('util-asyncflow');
 
 describe('utils', function () {
 
@@ -36,9 +37,12 @@ describe('utils', function () {
         },
         function (err, codes) {
 
+          // Do not remove this, it helps us to see the result when something changed
+          //fs.createWriteStream(join(__dirname, '..', 'trial', 'ractive-index.js')).end(codes);
+
           try {
             expect(err).to.not.be.ok();
-            expect(shasum(codes)).to.be('89cfe92668352998551e443dcbf289b40aab2d36');
+            expect(shasum(codes)).to.be('5eaa4e6f62fdac43a48321b0df949c5e2f30ff32');
             done();
           }
           catch (err) { done(err)}
@@ -107,11 +111,11 @@ describe('utils', function () {
         function (err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
-          fs.createWriteStream(join(__dirname, '..', 'trial', 'concat-result.js')).end(codes);
+          //fs.createWriteStream(join(__dirname, '..', 'trial', 'concat-result.js')).end(codes);
 
 
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('9646b13ab8b441b90e2e8a4e12c96ef467eba302');
+          expect(shasum(codes)).to.be('87a7121582073a53577821cf3ec6a13b16e2c2f7');
           done();
         }
       );
@@ -233,10 +237,10 @@ describe('utils', function () {
         uglify(codes, function (err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
-          // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-test-1.min.js')).end(codes);
+          // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-ractive-legacy.js')).end(codes);
 
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('689bcf3588c43f0054794b94c53d48d808d55d16');
+          expect(shasum(codes)).to.be('1b93885be5cbb4670ffeff69126732cc6a2b418d');
           // no babel expect(shasum(codes)).to.be('10c25a29aef410d883b03f9b0a13cde7b0a13d02');
           // uglify-js@2.4.16 0e35b7047fc4a39b38e3aca80c7f07d5965ffbe6
           // uglify-js@2.4.20 4057d594b742043c653747a8d444e7697cf27c60
@@ -247,82 +251,106 @@ describe('utils', function () {
       })
     });
 
-    it('should minify arrow function', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'arrow-func.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+    describe('with browserify', function () {
+
+      it('should minify arrow function', function(done) {
+
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'arrow-func.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-arrow-func.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('eef92e13e8e6c228e3fe0bddddd115b802baf75c');
+          expect(shasum(codes)).to.be('cd2622b3e96be9b51c52e5a38597b18d578bd112');
           done();
-        })
-      })
-    })
+        });
+      });
 
-    it('should minify arrow function2', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'arrow-func2.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+      it('should minify arrow function2', function(done) {
+
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'arrow-func2.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-arrow-func2.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('097605ecc4546d0abbfc8ab0900089b2f742e16f');
+          expect(shasum(codes)).to.be('3fd4a8be42e3f1aced8ad2fa0c88741db95d2b36');
           done();
-        })
-      })
-    })
+        });
 
-    it('should minify destructring', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'destructring.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+      });
+
+      it('should minify destructring', function(done) {
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'destructring.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-destructring.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('a657c62a11fe2067c9bb44f2bb5dcd04b76a4ec0');
+          expect(shasum(codes)).to.be('e0ceb2ada742c866539b148399942cf489ccb434');
           done();
-        })
+        });
       })
-    })
 
-    it('should minify object-shorthand', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'object-shorthand.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+      it('should minify object-shorthand', function(done) {
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'object-shorthand.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
-          // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-object-shorthand.js')).end(codes);
+          // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-object-shorthand.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('56ec8b608ff275d9fff33f740e8116d17da2987e');
+          expect(shasum(codes)).to.be('a9def3d09d0bd03352a27fb988cebbd8081224ea');
           done();
-        })
+        });
       })
-    })
 
-    it('should minify property', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'property.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+      it('should minify property', function(done) {
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'property.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-property.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('8ac12d1fe145aeb4af4b893b8d3c0d31f49e1379');
+          expect(shasum(codes)).to.be('668c005d6070807a625a2b685d49b17f1a9e4575');
           done();
-        })
+        });
       })
-    })
 
-    it('should minify spread-syntax', function(done) {
-      fs.readFile(join(__dirname, 'fixtures', 'files', 'es', 'spread-syntax.js'), function(err, codes) {
-        uglify(codes, function(err, codes) {
+      it('should minify spread-syntax', function(done) {
+
+        let fl = new Aflow();
+        let entry = join(__dirname, 'fixtures', 'files', 'es', 'spread-syntax.js');
+
+        fl.task(browserify, [entry]);
+        fl.wait(uglify);
+        fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-spread-syntax.min.js')).end(codes);
-
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('4b6309482969ba7068731eb5a1f6cba22aa013b9');
+          expect(shasum(codes)).to.be('5acae2d44a714b430214ccac845db230a2cfa759');
           done();
-        })
+        });
       })
     })
 

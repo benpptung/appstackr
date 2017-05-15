@@ -62,7 +62,8 @@
     "stylus": "^0.51.1",
     "through": "^2.3.6",
     "transforms": "^0.1.2",
-    "uglify-js": "^2.4.23"
+    "uglify-js": "^2.4.23",
+    "util-asyncflow": "^0.2.2"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",

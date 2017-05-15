@@ -46,7 +46,7 @@ describe('transforms', function() {
       });
 
       tr.on('end', function () {
-        data = Buffer.concat(data).toString('utf8');
+        data = data.join('');
 
         try {
           Function('module', data)(mod);

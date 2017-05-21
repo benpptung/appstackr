@@ -4,6 +4,9 @@ appstackr
 A personal opinioned tool to strategically stack up front-end bundles from js, jsx, css, scss, less, stylus, html-styled template files( swig, ractive, mustache ), or pure html files. Using browserify, browser-sync, uglifyjs, auto-prefixer, htmlcompressor..etc.
     
 Add hashes to the stacked bundles. So the browser can long-term cache js, image and css files. Speed up website in production environment.
+
+
+Beware to use this tool. It is working and tested on `node.js 4.4.3`
      
 
 Installation

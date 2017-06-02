@@ -6,7 +6,15 @@ A personal opinioned tool to strategically stack up front-end bundles from js, j
 Add hashes to the stacked bundles. So the browser can long-term cache js, image and css files. Speed up website in production environment.
 
 
-Beware to use this tool. It is working and tested on `node.js 4.4.3`
+Beware to use this tool. It is only working and tested on `node.js 4.4.3`, so there should be some problems if node.js > 4.4.3.
+
+ 
+
+#### Todo list
+- switch Gaze to chalk.
+- multiple stack files to separate concerns
+- update modules
+- rewrite entirely to make it easy to maintain
      
 
 Installation

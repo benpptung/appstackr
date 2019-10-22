@@ -2,20 +2,18 @@ appstackr
 =========
 
 A personal opinioned tool to strategically stack up front-end bundles from js, jsx, css, scss, less, stylus, html-styled template files( swig, ractive, mustache ), or pure html files. Using browserify, browser-sync, uglifyjs, auto-prefixer, htmlcompressor..etc.
-    
+
 Add hashes to the stacked bundles. So the browser can long-term cache js, image and css files. Speed up website in production environment.
 
 
 Beware to use this tool. It is only working and tested on `node.js 4.4.3`, so there should be some problems if node.js > 4.4.3.
-
- 
 
 #### Todo list
 - switch Gaze to chalk.
 - multiple stack files to separate concerns
 - update modules
 - rewrite entirely to make it easy to maintain
-     
+
 
 Installation
 ============================
@@ -71,7 +69,7 @@ $ npm run bsync
 Find the view files, edit the `src` and `href` pointed to `/js/base/site.min.js` and `/css/base/site.min.css`
 
 
-##### Example: 
+##### Example:
 
 https://github.com/benpptung/appstackr-examples
 
@@ -142,7 +140,7 @@ Usage
       ...
       }
     ];
-    
+
 ### stacks.js options
 
 - name: `string` e.g. site or base/site
@@ -251,7 +249,7 @@ Create `dist` folder, auto-refactor the views, public assests. Upload public ass
 
 ### Debug
 
-appstackr has no source map. To figure out what's wrong, use the following command to beautify the codes and see where the error is in browser console. If not sure which source file it is, use `stacks.js` as an index. e.g. to check `example.min.js` 
+appstackr has no source map. To figure out what's wrong, use the following command to beautify the codes and see where the error is in browser console. If not sure which source file it is, use `stacks.js` as an index. e.g. to check `example.min.js`
 
 ```
 $ npm run appstack -- -bf example:js

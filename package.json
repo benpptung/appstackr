@@ -17,7 +17,7 @@
     "babel-core": "^5.8.25",
     "babelify": "^6.3.0",
     "base-converter": "~1.1.2",
-    "browser-sync": "^2.7.6",
+    "browser-sync": "^2.26.7",
     "browserify": "10.1.0",
     "buffer-crc32": "~0.2.1",
     "clean-css": "^3.3.1",

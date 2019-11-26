@@ -38,11 +38,11 @@ describe('utils', function () {
         function (err, codes) {
 
           // Do not remove this, it helps us to see the result when something changed
-          //fs.createWriteStream(join(__dirname, '..', 'trial', 'ractive-index.js')).end(codes);
+          // fs.createWriteStream(join(__dirname, '..', 'trial', 'ractive-index.js')).end(codes);
 
           try {
             expect(err).to.not.be.ok();
-            expect(shasum(codes)).to.be('5eaa4e6f62fdac43a48321b0df949c5e2f30ff32');
+            expect(shasum(codes)).to.be('fffa8176e05abfe15f8c79f674f46c7a4c791685');
             done();
           }
           catch (err) { done(err)}
@@ -240,8 +240,9 @@ describe('utils', function () {
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-ractive-legacy.js')).end(codes);
 
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('1b93885be5cbb4670ffeff69126732cc6a2b418d');
+          expect(shasum(codes)).to.be('dab5c1a29a6220964d0d93e30c7d959a9ff9fcf3');
           // no babel expect(shasum(codes)).to.be('10c25a29aef410d883b03f9b0a13cde7b0a13d02');
+          // uglify-js@2.4.24 1b93885be5cbb4670ffeff69126732cc6a2b418d
           // uglify-js@2.4.16 0e35b7047fc4a39b38e3aca80c7f07d5965ffbe6
           // uglify-js@2.4.20 4057d594b742043c653747a8d444e7697cf27c60
           // uglify-js@2.4.21 a0605a32a840dea85f64b8108115301626752cbe
@@ -265,7 +266,11 @@ describe('utils', function () {
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-arrow-func.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('cd2622b3e96be9b51c52e5a38597b18d578bd112');
+
+          expect(shasum(codes)).to.be('d7a726a7bc06973253ed10bbd0d330277dae822d');
+
+          // Previous transpiled codes by babelify:
+          // expect(shasum(codes)).to.be('cd2622b3e96be9b51c52e5a38597b18d578bd112');
           done();
         });
       });
@@ -282,7 +287,10 @@ describe('utils', function () {
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-arrow-func2.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('3fd4a8be42e3f1aced8ad2fa0c88741db95d2b36');
+          expect(shasum(codes)).to.be('39ccba39bea3c79a8dce94686e10206efceab1da');
+
+          // Previous transpiled codes by babelify:
+          // expect(shasum(codes)).to.be('3fd4a8be42e3f1aced8ad2fa0c88741db95d2b36');
           done();
         });
 
@@ -293,13 +301,22 @@ describe('utils', function () {
         let entry = join(__dirname, 'fixtures', 'files', 'es', 'destructring.js');
 
         fl.task(browserify, [entry]);
+
+        // fl.wait((codes, next)=> {
+        //   fs.createWriteStream(join(__dirname, '..', 'trial', 'babel-destructring.js')).end(codes)
+        //   next(null, codes)
+        // })
+
         fl.wait(uglify);
         fl.run(function(err, codes) {
 
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-destructring.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('e0ceb2ada742c866539b148399942cf489ccb434');
+          expect(shasum(codes)).to.be('d43f43a2e354128ede38a431171fecad262e2edd');
+
+          // Previous transpiled:
+          // expect(shasum(codes)).to.be('e0ceb2ada742c866539b148399942cf489ccb434');
           done();
         });
       })
@@ -315,7 +332,10 @@ describe('utils', function () {
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-object-shorthand.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('a9def3d09d0bd03352a27fb988cebbd8081224ea');
+          expect(shasum(codes)).to.be('8e5b8c41c98ec348a80f671fffee6ea087f9e3d8');
+
+          // Previous transpiled:
+          // expect(shasum(codes)).to.be('a9def3d09d0bd03352a27fb988cebbd8081224ea');
           done();
         });
       })
@@ -331,7 +351,10 @@ describe('utils', function () {
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-property.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('668c005d6070807a625a2b685d49b17f1a9e4575');
+          expect(shasum(codes)).to.be('4edcee03634f28b2b856de7f82f370324d37fb2b');
+
+          // Previous transpiled
+          // expect(shasum(codes)).to.be('668c005d6070807a625a2b685d49b17f1a9e4575');
           done();
         });
       })
@@ -348,7 +371,10 @@ describe('utils', function () {
           // Do not remove this, so we can see if the result correct when something changed again
           // fs.createWriteStream(join(__dirname, '..', 'trial', 'uglify-spread-syntax.min.js')).end(codes);
           expect(err).to.not.be.ok();
-          expect(shasum(codes)).to.be('5acae2d44a714b430214ccac845db230a2cfa759');
+          expect(shasum(codes)).to.be('d29760f60290b7dbcaf0545d61df23b7d709c8d1');
+
+          // Previous transpiled:
+          // expect(shasum(codes)).to.be('5acae2d44a714b430214ccac845db230a2cfa759');
           done();
         });
       })

@@ -15,7 +15,7 @@
     "async": "^0.9.0",
     "autoprefixer-core": "^5.2.0",
     "babel-core": "^5.8.25",
-    "babelify": "^6.4.0",
+    "babelify": "^6.3.0",
     "base-converter": "~1.1.2",
     "browser-sync": "^2.26.7",
     "browserify": "10.1.0",
@@ -46,7 +46,7 @@
   },
   "directories": "./bin",
   "engines": {
-    "node": "<= 4.4.3"
+    "node": "<= 4.9.1"
   },
   "homepage": "https://github.com/benpptung/appstackr",
   "keywords": [
@@ -75,5 +75,8 @@
   },
   "scripts": {
     "test": "mocha test"
+  },
+  "optionalDependencies": {
+    "fsevents": "1.2.7"
   }
 }

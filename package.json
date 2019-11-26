@@ -20,7 +20,7 @@
     "browser-sync": "^2.26.7",
     "browserify": "10.1.0",
     "buffer-crc32": "~0.2.1",
-    "clean-css": "^3.3.1",
+    "clean-css": "^4.2.1",
     "colors": "^1.0.3",
     "commander": "^2.7.1",
     "debug": "^2.1.3",

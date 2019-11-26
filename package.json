@@ -37,7 +37,7 @@
     "stylus": "^0.51.1",
     "through": "^2.3.6",
     "transforms": "github:benpptung/transforms",
-    "uglify-js": "^2.4.23",
+    "uglify-js": "^3.7.0",
     "util-asyncflow": "^0.2.2"
   },
   "devDependencies": {
